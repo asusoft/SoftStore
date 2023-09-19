@@ -11,8 +11,8 @@ const ActiveOrder = () => {
             <View style={{
                 flex: 1.5,
             }}>
-                <Text style={{ fontSize: 18, color: COLORS.primary, fontWeight: '600' }}>Order QR-code</Text>
-                <Text style={{ fontSize: 16, marginTop: 8, color: COLORS.oldPrimary, }}>Active</Text>
+                <Text style={{ fontSize: 18, color: COLORS.darkPrimary, fontWeight: '600' }}>Order QR-code</Text>
+                <Text style={{ fontSize: 16, marginTop: 8, color: COLORS.primary, }}>Active</Text>
                 <Text style={{ fontSize: 16, marginTop: 8, opacity: 0.5 }}>Show th QR code to an employee to get your order</Text>
             </View>
             <View style={{ alignItems: 'center' }}>

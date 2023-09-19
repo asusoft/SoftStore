@@ -1,6 +1,6 @@
 //import liraries
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Pressable, Image, TouchableOpacity, FlatList } from 'react-native';
 import { COLORS, SIZES } from '../../../assets/constants/theme';
 import Header from '../../components/Header';
 import { SimpleLineIcons } from "@expo/vector-icons";
@@ -8,10 +8,13 @@ import images from '../../../assets/constants/images';
 import { useAuthContext } from '../../contexts/AuthContext';
 import icons from '../../../assets/constants/icons';
 import ActiveOrder from '../../components/ActiveOrder';
+import dummyData from '../../../assets/constants/dummyData';
+import Story from '../../components/Story';
 
 // create a component
 const HomeScreen = () => {
     const { dbUser } = useAuthContext();
+    const Storie = dummyData.Stories;
     return (
         <SafeAreaView style={styles.container}>
             <Header
@@ -45,11 +48,27 @@ const HomeScreen = () => {
                     </Pressable>
                 }
             />
-            {/*<View style={styles.greetings}>
+            <View style={styles.greetings}>
                 <Text style={styles.greetingsText}>{dbUser?.name.split(' ')[0]}, nice to see you again!</Text>
-            </View>*/}
+            </View>
+            {/*<ActiveOrder />*/}
 
-            <ActiveOrder />
+            <View style={{ marginTop: 5, marginHorizontal: 10 }}>
+                <FlatList
+                    data={Storie}
+                    horizontal
+                    scrollEventThrottle={32}
+                    pagingEnabled
+                    snapToAlignment={'center'}
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => {
+                        return (
+                            <Story item={item} />
+                        )
+                    }}
+                />
+            </View>
         </SafeAreaView>
     );
 };
@@ -66,7 +85,8 @@ const styles = StyleSheet.create({
     },
     greetingsText: {
         fontSize: 22,
-        fontWeight: '600'
+        fontWeight: '600',
+        marginBottom: 20
     },
     location: {
         flexDirection: "row",
@@ -83,7 +103,18 @@ const styles = StyleSheet.create({
         color: "gray",
         fontWeight: "500",
         fontSize: 15,
-    }
+    },
+    storyContainer: {
+        padding: 1,
+        width: 100,
+        height: 120,
+        borderRadius: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 2,
+        borderColor: COLORS.darkPrimary,
+        backgroundColor: COLORS.secondary,
+    },
 });
 
 //make this component available to the app

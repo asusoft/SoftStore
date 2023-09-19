@@ -159,7 +159,7 @@ const Stories = [
     {
         "id": 1,
         "merchantID": 1,
-        "title": "New Menu Launch",
+        "title": "Apple Phones",
         "description": "Introducing our exciting new menu with delicious dishes!",
         "startDate": "2023-07-10",
         "endDate": "2023-07-15",
@@ -169,7 +169,7 @@ const Stories = [
     {
         "id": 2,
         "merchantID": 4,
-        "title": "Chef's Special",
+        "title": "Discounted products",
         "description": "Try our exclusive Chef's Special dish crafted with care.",
         "startDate": "2023-07-05",
         "endDate": "2023-07-20",
