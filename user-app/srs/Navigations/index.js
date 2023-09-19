@@ -9,6 +9,7 @@ import Onboarding from "../screens/Onboarding/Onboarding";
 import TempScreen from "../screens/Temp/TempScreen";
 import { useAuthContext } from "../contexts/AuthContext";
 import Loading from "../screens/Onboarding/Loading";
+import HomeScreen from "../screens/HomeScreen/HomeScree";
 
 const RootStack = createNativeStackNavigator();
 
@@ -35,7 +36,7 @@ const RootNavigator = () => {
             <RootStack.Navigator screenOptions={{ headerShown: false }}>
                 {
                     dbUser ?
-                        <RootStack.Screen name="Temp" component={TempScreen} />
+                        <RootStack.Screen name="Landing" component={HomeStackNavigator} />
                         :
                         (
                             <>
@@ -75,6 +76,22 @@ const AuthStackNavigator = () => {
                 component={ResetPassword}
             />
         </AuthStack.Navigator>
+    );
+};
+
+const HomeStack = createNativeStackNavigator();
+
+const HomeStackNavigator = () => {
+    return (
+        <HomeStack.Navigator
+            screenOptions={{ headerShown: false }}
+            initialRouteName="Home"
+        >
+            <HomeStack.Screen
+                name="Home"
+                component={HomeScreen}
+            />
+        </HomeStack.Navigator>
     );
 };
 
