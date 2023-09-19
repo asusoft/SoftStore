@@ -1,4 +1,4 @@
-rootProject.name = 'user-app'
+rootProject.name = 'SoftStore'
 
 apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
 useExpoModules()
