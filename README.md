@@ -1,3 +1,3 @@
-# food-order-delivery
+# SoftStore
 
 For my business
