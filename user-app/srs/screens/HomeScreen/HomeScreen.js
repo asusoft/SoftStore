@@ -17,73 +17,94 @@ const HomeScreen = () => {
     const Storie = dummyData.Stories;
     return (
         <SafeAreaView style={styles.container}>
-            <Header
-                leftComponent={
-                    <View
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                            height: 45,
-                            backgroundColor: COLORS.background
-                        }}
-                    >
-                        <Image
-                            source={images.logo2}
-                            style={{
-                                width: 105,
-                                height: 40,
-                            }}
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                ListHeaderComponent={() => (
+                    <>
+                        <Header
+                            leftComponent={
+                                <View
+                                    style={{
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        height: 45,
+                                        backgroundColor: COLORS.background
+                                    }}
+                                >
+                                    <Image
+                                        source={images.logo2}
+                                        style={{
+                                            width: 105,
+                                            height: 40,
+                                        }}
+                                    />
+                                </View>
+                            }
+
+                            rightComponent={
+                                <Pressable style={styles.location}>
+                                    <Text style={styles.locationText} numberOfLines={1}>
+                                        Kano
+                                    </Text>
+                                    <View style={styles.locationIcon}>
+                                        <SimpleLineIcons name="location-pin" size={17} color="black" />
+                                    </View>
+                                </Pressable>
+                            }
                         />
-                    </View>
-                }
-
-                rightComponent={
-                    <Pressable style={styles.location}>
-                        <Text style={styles.locationText} numberOfLines={1}>
-                            Kano
-                        </Text>
-                        <View style={styles.locationIcon}>
-                            <SimpleLineIcons name="location-pin" size={17} color="black" />
+                        <View style={styles.greetings}>
+                            <Text style={styles.greetingsText}>{dbUser?.name.split(' ')[0]}, nice to see you again!</Text>
                         </View>
-                    </Pressable>
-                }
+                        {/*<ActiveOrder />*/}
+
+                        <View style={{ marginTop: 5, marginHorizontal: 10 }}>
+                            <FlatList
+                                data={Storie}
+                                horizontal
+                                scrollEventThrottle={32}
+                                pagingEnabled
+                                snapToAlignment={'center'}
+                                showsHorizontalScrollIndicator={false}
+                                keyExtractor={item => item.id}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <Story item={item} />
+                                    )
+                                }}
+                            />
+                        </View>
+
+                        <TouchableOpacity
+                            style={styles.dayProduct}
+                        >
+                            <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
+                            <View style={{
+                                flex: 1,
+                                height: '100%',
+                                width: '100%',
+                                alignSelf: 'center',
+                                position: 'absolute', color: COLORS.secondary, fontWeight: '700', fontSize: 12, borderRadius: 8,
+                                backgroundColor: 'rgba(0, 0, 0, 0.4)', paddingHorizontal: 10, paddingVertical: 5
+                            }} />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.dayBrand}
+                        >
+                            <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
+                            <View style={{
+                                flex: 1,
+                                height: '100%',
+                                width: '100%',
+                                alignSelf: 'center',
+                                position: 'absolute', color: COLORS.secondary, fontWeight: '700', fontSize: 12, borderRadius: 8,
+                                backgroundColor: 'rgba(0, 0, 0, 0.4)', paddingHorizontal: 10, paddingVertical: 5
+                            }} />
+                        </TouchableOpacity>
+
+                    </>
+                )}
             />
-            <View style={styles.greetings}>
-                <Text style={styles.greetingsText}>{dbUser?.name.split(' ')[0]}, nice to see you again!</Text>
-            </View>
-            {/*<ActiveOrder />*/}
-
-            <View style={{ marginTop: 5, marginHorizontal: 10 }}>
-                <FlatList
-                    data={Storie}
-                    horizontal
-                    scrollEventThrottle={32}
-                    pagingEnabled
-                    snapToAlignment={'center'}
-                    showsHorizontalScrollIndicator={false}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => {
-                        return (
-                            <Story item={item} />
-                        )
-                    }}
-                />
-            </View>
-
-            <TouchableOpacity
-                style={styles.dayProduct}
-            >
-                <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
-                <View style={{
-                    flex: 1,
-                    height: '100%',
-                    width: '100%',
-                    alignSelf: 'center',
-                    position: 'absolute', color: COLORS.secondary, fontWeight: '700', fontSize: 12, borderRadius: 8,
-                    backgroundColor: 'rgba(0, 0, 0, 0.4)', paddingHorizontal: 10, paddingVertical: 5
-                }} />
-            </TouchableOpacity>
-
         </SafeAreaView>
     );
 };
@@ -93,6 +114,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: COLORS.background,
+    },
+    dayBrand: {
+        marginTop: 15,
+        marginHorizontal: 15,
+        height: 350,
+        borderRadius: 8,
+        backgroundColor: COLORS.secondary,
     },
     dayProduct: {
         marginTop: 15,
