@@ -1,4 +1,4 @@
-package com.softsavvy.userapp;
+package com.softsavvy.softstore;
 
 import android.app.Application;
 import android.content.res.Configuration;

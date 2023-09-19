@@ -31,13 +31,13 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-	        <string>com.googleusercontent.apps.334347452009-mf2r15pjl6ohn971adc94f6urbmhodoi</string>
+          <string>com.googleusercontent.apps.334347452009-mf2r15pjl6ohn971adc94f6urbmhodoi</string>
         </array>
       </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>exp+user-app</string>
+          <string>exp+softstore</string>
         </array>
       </dict>
     </array>

@@ -1,4 +1,4 @@
-package com.softsavvy.userapp;
+package com.softsavvy.softstore;
 
 import android.os.Build;
 import android.os.Bundle;

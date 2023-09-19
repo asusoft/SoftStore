@@ -17,7 +17,7 @@
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
-      "bundleIdentifier": "undefined"
+      "bundleIdentifier": "com.softsavvy.softstore"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -25,7 +25,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "undefined"
+      "package": "com.softsavvy.softstore"
     },
     "plugins": [
       "@react-native-firebase/app",
