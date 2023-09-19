@@ -11,6 +11,7 @@ const Story = ({ item, setStory, setModalVisible }) => {
     return (
         <View style={{ margin: 5, width: 100 }}>
             <TouchableOpacity
+                activeOpacity={0.5}
                 style={styles.container}
             >
                 <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />

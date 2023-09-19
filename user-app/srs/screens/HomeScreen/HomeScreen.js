@@ -10,17 +10,20 @@ import icons from '../../../assets/constants/icons';
 import ActiveOrder from '../../components/ActiveOrder';
 import dummyData from '../../../assets/constants/dummyData';
 import Story from '../../components/Story';
+import Category from '../../components/Category';
 
 // create a component
 const HomeScreen = () => {
     const { dbUser } = useAuthContext();
     const Storie = dummyData.Stories;
+    const categories = dummyData.Categories;
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 ListHeaderComponent={() => (
                     <>
+                        {/* HEADER */}
                         <Header
                             leftComponent={
                                 <View
@@ -55,8 +58,11 @@ const HomeScreen = () => {
                         <View style={styles.greetings}>
                             <Text style={styles.greetingsText}>{dbUser?.name.split(' ')[0]}, nice to see you again!</Text>
                         </View>
+
+                        {/* Active Order */}
                         {/*<ActiveOrder />*/}
 
+                        {/* STORY SECTION */}
                         <View style={{ marginTop: 5, marginHorizontal: 10 }}>
                             <FlatList
                                 data={Storie}
@@ -74,7 +80,9 @@ const HomeScreen = () => {
                             />
                         </View>
 
+                        {/* PRODUCT OF THE DAY */}
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             style={styles.dayProduct}
                         >
                             <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
@@ -88,7 +96,9 @@ const HomeScreen = () => {
                             }} />
                         </TouchableOpacity>
 
+                        {/* BRAND OF THE DAY */}
                         <TouchableOpacity
+                            activeOpacity={0.7}
                             style={styles.dayBrand}
                         >
                             <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
@@ -102,6 +112,19 @@ const HomeScreen = () => {
                             }} />
                         </TouchableOpacity>
 
+                        {/* CATEGORIES */}
+                        <View style={{ marginTop: 20, marginHorizontal: 10 }}>
+                            <FlatList
+                                data={categories}
+                                horizontal={true}
+                                showsHorizontalScrollIndicator={false}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <Category category={item} />
+                                    );
+                                }}
+                            />
+                        </View>
                     </>
                 )}
             />
@@ -153,17 +176,15 @@ const styles = StyleSheet.create({
         fontWeight: "500",
         fontSize: 15,
     },
-    storyContainer: {
+
+    category: {
         padding: 1,
-        width: 100,
-        height: 120,
-        borderRadius: 12,
+        width: 150,
+        height: 220,
+        borderRadius: 8,
         justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: 2,
-        borderColor: COLORS.darkPrimary,
         backgroundColor: COLORS.secondary,
-    }
+    },
 });
 
 //make this component available to the app
