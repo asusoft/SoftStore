@@ -13,6 +13,7 @@ const menu = require('../icons/menu.png');
 const minus = require('../icons/minus.png');
 const notification = require('../icons/notification.png');
 const plus = require('../icons/plus.png');
+const qrcode = require('../icons/qrcode.png')
 const search = require('../icons/search.png');
 const star = require('../icons/star.png');
 const time = require('../icons/time.png');
@@ -35,6 +36,7 @@ export default {
     minus,
     notification,
     plus,
+    qrcode,
     search,
     star,
     time

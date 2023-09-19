@@ -6,6 +6,8 @@ import Header from '../../components/Header';
 import { SimpleLineIcons } from "@expo/vector-icons";
 import images from '../../../assets/constants/images';
 import { useAuthContext } from '../../contexts/AuthContext';
+import icons from '../../../assets/constants/icons';
+import ActiveOrder from '../../components/ActiveOrder';
 
 // create a component
 const HomeScreen = () => {
@@ -43,9 +45,11 @@ const HomeScreen = () => {
                     </Pressable>
                 }
             />
-            <View style={styles.greetings}>
+            {/*<View style={styles.greetings}>
                 <Text style={styles.greetingsText}>{dbUser?.name.split(' ')[0]}, nice to see you again!</Text>
-            </View>
+            </View>*/}
+
+            <ActiveOrder />
         </SafeAreaView>
     );
 };
