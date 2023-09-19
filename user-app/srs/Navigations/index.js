@@ -9,7 +9,7 @@ import Onboarding from "../screens/Onboarding/Onboarding";
 import TempScreen from "../screens/Temp/TempScreen";
 import { useAuthContext } from "../contexts/AuthContext";
 import Loading from "../screens/Onboarding/Loading";
-import HomeScreen from "../screens/HomeScreen/HomeScree";
+import HomeScreen from "../screens/HomeScreen/HomeScreen";
 
 const RootStack = createNativeStackNavigator();
 

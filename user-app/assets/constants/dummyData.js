@@ -20,6 +20,366 @@ const OnboardingData = [
 ]
 
 
+const Categories = [
+    {
+        id: 1,
+        name: 'Fast Food',
+        icon: "https://www.citypng.com/public/uploads/small/11653329235ne77vw13spafnlhowriskdmgxggwddl7kqipk4uyzh7zjvsn4gqeedkyif1cmp6jvlxmax8nfgrpe4diquhgqlwhutw52fvpbpp2.png"
+    },
+    {
+        id: 2,
+        name: "Pizza",
+        icon: "https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-23.png"
+    },
+    {
+        id: 3,
+        name: "Breakfast",
+        icon: "https://www.pngall.com/wp-content/uploads/7/Dessert-PNG-Photo.png"
+    },
+    {
+        id: 4,
+        name: "Drink",
+        icon: "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png"
+    },
+    {
+        id: 5,
+        name: "Nuggets",
+        icon: "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png"
+    },
+    {
+        id: 6,
+        name: "Burger",
+        icon: "https://www.citypng.com/public/uploads/small/11653329235ne77vw13spafnlhowriskdmgxggwddl7kqipk4uyzh7zjvsn4gqeedkyif1cmp6jvlxmax8nfgrpe4diquhgqlwhutw52fvpbpp2.png"
+    },
+]
+
+
+const Merchants = [
+    {
+        "id": 1,
+        "name": "El Cabo Coffe Bar Tres De Mayo",
+        "deliveryFee": 305,
+        "minDeliveryTime": 20,
+        "maxDeliveryTime": 30,
+        "rating": 4.5,
+        "address": "Lenina Avenue 35, No 4, Visotky",
+        categories: [3, 2],
+        isFavorite: true,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
+    },
+    {
+        "id": 2,
+        "name": "Tony Roma's - C.C. Meridiano",
+        "deliveryFee": 110,
+        "address": "PO Box 96439",
+        "minDeliveryTime": 15,
+        "maxDeliveryTime": 35,
+        "rating": 4.7,
+        categories: [1, 2, 3, 4],
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant2.jpeg",
+    },
+    {
+        "id": 3,
+        "name": "Brothers Barbecue",
+        "address": "Apt 299",
+        "deliveryFee": 160,
+        "minDeliveryTime": 20,
+        "maxDeliveryTime": 30,
+        "rating": 4.3,
+        categories: [1, 2],
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
+    },
+    {
+        "id": 4,
+        "name": "Hamburguesa Nostra La Salle",
+        "address": "19th Floor",
+        "deliveryFee": 150,
+        "minDeliveryTime": 30,
+        "maxDeliveryTime": 40,
+        "rating": 4.5,
+        categories: [2, 5],
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant4.jpeg",
+    }
+]
+
+const Offers = [
+    {
+        "id": 1,
+        "title": "Weekend Brunch Special",
+        "description": "Enjoy a delicious brunch with a variety of options.",
+        "merchantID": 3,
+        "startDate": "2023-07-10",
+        "endDate": "2023-07-12",
+        "isActive": true,
+        "image": "http://dummyimage.com/132x100.png/5fa2dd/ffffff"
+    },
+    {
+        "id": 2,
+        "title": "Family Meal Deal",
+        "description": "Order a family-sized meal with a discount for your loved ones.",
+        "merchantID": 4,
+        "startDate": "2023-07-05",
+        "endDate": "2023-07-15",
+        "isActive": true,
+        "image": "http://dummyimage.com/111x100.png/cc0000/ffffff"
+    },
+    {
+        "id": 3,
+        "title": "Happy Hour Drinks",
+        "description": "Get discounted prices on selected drinks during our happy hour.",
+        "merchantID": 2,
+        "startDate": "2023-07-01",
+        "endDate": "2023-07-31",
+        "isActive": true,
+        "image": "http://dummyimage.com/184x100.png/ff4444/ffffff"
+    },
+    {
+        "id": 4,
+        "title": "Lunch Combo",
+        "description": "Try our special lunch combo with a main dish, side, and beverage.",
+        "merchantID": 1,
+        "startDate": "2023-07-08",
+        "endDate": "2023-07-20",
+        "isActive": true,
+        "image": "http://dummyimage.com/129x100.png/cc0000/ffffff"
+    },
+    {
+        "id": 5,
+        "title": "Dessert Delight",
+        "description": "Indulge in our heavenly desserts and satisfy your sweet tooth.",
+        "merchantID": 2,
+        "startDate": "2023-07-12",
+        "endDate": "2023-07-18",
+        "isActive": true,
+        "image": "http://dummyimage.com/160x100.png/5fa2dd/ffffff"
+    }
+]
+
+const Stories = [
+    {
+        "id": 1,
+        "merchantID": 1,
+        "title": "New Menu Launch",
+        "description": "Introducing our exciting new menu with delicious dishes!",
+        "startDate": "2023-07-10",
+        "endDate": "2023-07-15",
+        "isActive": true,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg"
+    },
+    {
+        "id": 2,
+        "merchantID": 4,
+        "title": "Chef's Special",
+        "description": "Try our exclusive Chef's Special dish crafted with care.",
+        "startDate": "2023-07-05",
+        "endDate": "2023-07-20",
+        "isActive": true,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg"
+    },
+    {
+        "id": 3,
+        "merchantID": 3,
+        "title": "Limited-Time Offer",
+        "description": "Don't miss out on our limited-time offer with exciting discounts!",
+        "startDate": "2023-07-01",
+        "endDate": "2023-07-31",
+        "isActive": true,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant4.jpeg"
+    },
+    {
+        "id": 4,
+        "merchantID": 2,
+        "title": "Celebration Catering",
+        "description": "Let us cater your special celebrations with our delectable dishes.",
+        "startDate": "2023-07-08",
+        "endDate": "2023-07-15",
+        "isActive": true,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant2.jpeg"
+    },
+    {
+        "id": 5,
+        "merchantID": 1,
+        "title": "Happy Hour Offer",
+        "description": "Join us during happy hour for exclusive discounts on drinks and snacks.",
+        "startDate": "2023-07-12",
+        "endDate": "2023-07-18",
+        "isActive": true,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg"
+    }
+]
+
+const Dishes = [
+    {
+        "id": "1",
+        "name": "Cheese Tequeños",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 690,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
+        categories: [1, 2],
+        isFavorite: true,
+        "rating": 3.5,
+    },
+    {
+        "id": "2",
+        "name": "Hamburger La Super Cabo Burger",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 1010,
+        categories: [1, 3],
+        isFavorite: false,
+        "rating": 4.5,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
+    },
+    {
+        id: "3",
+        categories: [6],
+        isFavorite: false,
+        "rating": 4.5,
+        "name": "U.S.A. Burger",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 430,
+        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
+    },
+    {
+        id: "4",
+        categories: [3, 5],
+        isFavorite: true,
+        "name": "Slices of Llanero Cheese",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 500,
+        "rating": 2.5,
+    },
+    {
+        id: "5",
+        categories: [2, 3, 6],
+        isFavorite: false,
+        "name": "Papas Locas El Cabo",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 750,
+        "rating": 3.8,
+    },
+    {
+        "id": "6",
+        "name": "Cheese Tequeños",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 690,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
+        categories: [1, 2],
+        isFavorite: true,
+        "rating": 3.5,
+    },
+    {
+        "id": "7",
+        "name": "Hamburger La Super Cabo Burger",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 1010,
+        categories: [1, 3],
+        isFavorite: false,
+        "rating": 4.5,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
+    },
+    {
+        id: "8",
+        categories: [6],
+        isFavorite: false,
+        "rating": 4.5,
+        "name": "U.S.A. Burger",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 430,
+        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
+    },
+    {
+        id: "9",
+        categories: [3, 5],
+        isFavorite: true,
+        "name": "Slices of Llanero Cheese",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 500,
+        "rating": 2.5,
+    },
+    {
+        id: "10",
+        categories: [2, 3, 6],
+        isFavorite: false,
+        "name": "Papas Locas El Cabo",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 750,
+        "rating": 3.8,
+    },
+    {
+        "id": "11",
+        "name": "Cheese Tequeños",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 690,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
+        categories: [1, 2],
+        isFavorite: true,
+        "rating": 3.5,
+    },
+    {
+        "id": "12",
+        "name": "Hamburger La Super Cabo Burger",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 1010,
+        categories: [1, 3],
+        isFavorite: false,
+        "rating": 4.5,
+        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
+    },
+    {
+        id: "13",
+        categories: [6],
+        isFavorite: false,
+        "rating": 4.5,
+        "name": "U.S.A. Burger",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 430,
+        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
+    },
+    {
+        id: "14",
+        categories: [3, 5],
+        isFavorite: true,
+        "name": "Slices of Llanero Cheese",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 500,
+        "rating": 2.5,
+    },
+    {
+        id: "15",
+        categories: [2, 3, 6],
+        isFavorite: false,
+        "name": "Papas Locas El Cabo",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+        "price": 750,
+        "rating": 3.8,
+    }
+]
+
+const Sizes = [
+    {
+        id: 1,
+        name: 'Small',
+        price: '750',
+    },
+    {
+        id: 2,
+        name: 'medium',
+        price: '1050',
+    },
+    {
+        id: 3,
+        name: 'Large',
+        price: '1250'
+    }
+]
+
+
 export default {
-    OnboardingData
+    OnboardingData,
+    Categories,
+    Merchants,
+    Offers,
+    Stories,
+    Dishes,
+    Sizes
 }
