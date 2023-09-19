@@ -25,13 +25,13 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.softsavvy.userapp</string>
+          <string>com.softsavvy.softstore</string>
         </array>
       </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.googleusercontent.apps.565463369053-a4pgqvjd4junoaf08ijm699p9skji8l7</string>
+	        <string>com.googleusercontent.apps.334347452009-mf2r15pjl6ohn971adc94f6urbmhodoi</string>
         </array>
       </dict>
       <dict>
