@@ -30,7 +30,7 @@ const HomeScreen = () => {
                         <Image
                             source={images.logo2}
                             style={{
-                                width: 110,
+                                width: 105,
                                 height: 40,
                             }}
                         />
@@ -69,6 +69,21 @@ const HomeScreen = () => {
                     }}
                 />
             </View>
+
+            <TouchableOpacity
+                style={styles.dayProduct}
+            >
+                <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
+                <View style={{
+                    flex: 1,
+                    height: '100%',
+                    width: '100%',
+                    alignSelf: 'center',
+                    position: 'absolute', color: COLORS.secondary, fontWeight: '700', fontSize: 12, borderRadius: 8,
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)', paddingHorizontal: 10, paddingVertical: 5
+                }} />
+            </TouchableOpacity>
+
         </SafeAreaView>
     );
 };
@@ -79,8 +94,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.background,
     },
+    dayProduct: {
+        marginTop: 15,
+        marginHorizontal: 15,
+        height: 150,
+        borderRadius: 8,
+        backgroundColor: COLORS.secondary,
+    },
     greetings: {
-        marginHorizontal: SIZES.padding + 5,
+        marginHorizontal: 15,
         marginTop: 10
     },
     greetingsText: {
@@ -100,7 +122,6 @@ const styles = StyleSheet.create({
         marginLeft: 25
     },
     locationText: {
-        color: "gray",
         fontWeight: "500",
         fontSize: 15,
     },
@@ -114,7 +135,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: COLORS.darkPrimary,
         backgroundColor: COLORS.secondary,
-    },
+    }
 });
 
 //make this component available to the app
