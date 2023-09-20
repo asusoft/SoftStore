@@ -7,7 +7,8 @@ import SignIn from "../screens/AuthScreens/SignIn";
 import OTP from "../screens/AuthScreens/OTP";
 import ResetPassword from "../screens/AuthScreens/ResetPassword";
 import Onboarding from "../screens/Onboarding/Onboarding";
-import TempScreen from "../screens/Temp/TempScreen";
+import CatalogScreen from "../screens/Catalog/CatalogScreen";
+
 import { useAuthContext } from "../contexts/AuthContext";
 import Loading from "../screens/Onboarding/Loading";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
@@ -15,6 +16,7 @@ import { COLORS } from "../../assets/constants/theme";
 import { Image } from "react-native";
 import icons from "../../assets/constants/icons";
 import { FontAwesome5 } from '@expo/vector-icons';
+
 
 const RootStack = createNativeStackNavigator();
 
@@ -62,12 +64,16 @@ const ButtomTabNavigator = () => {
         <ButtomTab.Navigator
             screenOptions={{
                 headerShown: false,
-            }}
-            tabBarOptions={{
-                activeTintColor: COLORS.darkPrimary,
-                labelStyle: {
-                    fontSize: 14,
+                tabBarActiveTintColor: COLORS.primary,
+                tabBarLabelStyle: {
+                    "fontSize": 12
                 },
+                tabBarStyle: [
+                    {
+                        "display": "flex"
+                    },
+                    null
+                ]
             }}
             initialRouteName="Home"
         >
@@ -85,8 +91,8 @@ const ButtomTabNavigator = () => {
                 }}
             />
             <ButtomTab.Screen
-                name="Catalog"
-                component={HomeStackNavigator}
+                name="CatalogStack"
+                component={CatalogStackNavigator}
                 options={{
                     tabBarIcon: ({ color, size, focused }) => (
                         <FontAwesome5
@@ -95,6 +101,7 @@ const ButtomTabNavigator = () => {
                             size={20}
                         />
                     ),
+                    tabBarLabel: 'Catalog',
                 }}
             />
             <ButtomTab.Screen
@@ -182,6 +189,25 @@ const HomeStackNavigator = () => {
                 component={HomeScreen}
             />
         </HomeStack.Navigator>
+    );
+};
+
+const CatalogStack = createNativeStackNavigator();
+
+const CatalogStackNavigator = () => {
+    return (
+        <CatalogStack.Navigator
+            screenOptions={{ headerShown: false }}
+            initialRouteName="CatalogScreen"
+        >
+            <CatalogStack.Screen
+                name="Catalog"
+                options={{
+                    headerShown: true,
+                }}
+                component={CatalogScreen}
+            />
+        </CatalogStack.Navigator>
     );
 };
 

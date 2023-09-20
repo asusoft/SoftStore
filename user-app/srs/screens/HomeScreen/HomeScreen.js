@@ -120,7 +120,7 @@ const HomeScreen = () => {
                             <Text style={{ fontSize: 20, fontWeight: '700', marginBottom: 10 }}>Popular Items</Text>
 
                             <FlatList
-                                data={Items}
+                                data={categories}
                                 showsVerticalScrollIndicator={false}
                                 renderItem={({ item }) => {
                                     return (

@@ -1,3 +1,5 @@
+import images from "./images"
+
 const OnboardingData = [
     {
         "key": "3571572",
@@ -50,6 +52,44 @@ const Categories = [
         id: 6,
         name: "Accessories",
         icon: "https://www.pngall.com/wp-content/uploads/5/Mobile-Phone-Accessories-Transparent.png"
+    },
+]
+
+const Brands = [
+    {
+        id: 1,
+        name: 'Apple',
+        icon: "https://cdn.freebiesupply.com/images/large/2x/apple-logo-transparent.png"
+    },
+    {
+        id: 2,
+        name: "Samsung",
+        icon: "https://www.freepnglogos.com/uploads/black-samsung-logo-png-21.png"
+    },
+    {
+        id: 3,
+        name: "Infinix",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Infinix_logo.svg/2560px-Infinix_logo.svg.png"
+    },
+    {
+        id: 4,
+        name: "Tecno",
+        icon: "https://ww1.freelogovectors.net/wp-content/uploads/2022/03/tecno_mobile_logo_freelogovectors.net_.png?lossy=1&w=2560&ssl=1"
+    },
+    {
+        id: 5,
+        name: "Xiomi",
+        icon: "https://assets.stickpng.com/images/60410c7b26ef2b00045692f8.png"
+    },
+    {
+        id: 6,
+        name: "Huawei",
+        icon: "https://download.logo.wine/logo/Huawei/Huawei-Logo.wine.png"
+    },
+    {
+        id: 7,
+        name: "Others",
+        icon: "/Users/softsavvy/Desktop/SoftStore/user-app/assets/images/Logo_2.png"
     },
 ]
 
@@ -406,5 +446,6 @@ export default {
     Stories,
     SmallAdverts,
     BigAdverts,
-    Items
+    Items,
+    Brands
 }
