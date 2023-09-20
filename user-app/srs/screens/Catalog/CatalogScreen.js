@@ -6,10 +6,17 @@ import icons from '../../../assets/constants/icons';
 import dummyData from '../../../assets/constants/dummyData';
 import Brand from '../../components/Brand';
 import Category from '../../components/Category';
+import { useNavigation } from '@react-navigation/native';
+
 
 // create a component
 const CatalogScreen = () => {
     const brands = dummyData.Brands;
+    const navigation = useNavigation()
+
+    const goToBrand = ({ item }) => {
+        navigation.navigate('BrandScreen')
+    }
     return (
         <SafeAreaView style={styles.container}>
             <FlatList

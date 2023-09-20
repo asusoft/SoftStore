@@ -6,11 +6,12 @@ import { View, StyleSheet, StatusBar } from 'react-native';
 const Header = ({
     leftComponent,
     middleComponent,
-    rightComponent
+    rightComponent,
+    headerStyle
 }) => {
     return (
         <View>
-            <View style={styles.top}>
+            <View style={{ ...styles.top, ...headerStyle }}>
                 {leftComponent}
                 {middleComponent}
                 {rightComponent}

@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Image } from "react-native";
 
+
+import Loading from "../screens/Onboarding/Loading";
+import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import SignUp from "../screens/AuthScreens/SignUp";
 import SignIn from "../screens/AuthScreens/SignIn";
 import OTP from "../screens/AuthScreens/OTP";
 import ResetPassword from "../screens/AuthScreens/ResetPassword";
 import Onboarding from "../screens/Onboarding/Onboarding";
 import CatalogScreen from "../screens/Catalog/CatalogScreen";
+import BrandScreen from "../screens/Catalog/BrandScreen";
 
 import { useAuthContext } from "../contexts/AuthContext";
-import Loading from "../screens/Onboarding/Loading";
-import HomeScreen from "../screens/HomeScreen/HomeScreen";
+
 import { COLORS } from "../../assets/constants/theme";
-import { Image } from "react-native";
 import icons from "../../assets/constants/icons";
-import { FontAwesome5 } from '@expo/vector-icons';
 
 
 const RootStack = createNativeStackNavigator();
@@ -206,6 +209,10 @@ const CatalogStackNavigator = () => {
                     headerShown: true,
                 }}
                 component={CatalogScreen}
+            />
+            <CatalogStack.Screen
+                name="BrandScreen"
+                component={BrandScreen}
             />
         </CatalogStack.Navigator>
     );

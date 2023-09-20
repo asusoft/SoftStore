@@ -1,15 +1,15 @@
 import { Image, Pressable, StyleSheet, Text, View, FlatList } from 'react-native';
 import React from 'react';
 import { COLORS, SIZES } from '../../assets/constants/theme';
+import { useNavigation } from '@react-navigation/native';
 
 const Brand = ({ brand }) => {
-    const onPress = () => {
-        console.warn('Category Pressed')
-    }
+    const navigation = useNavigation();
+
 
     return (
         <View style={{ margin: 5 }}>
-            <Pressable style={styles.brand}>
+            <Pressable onPress={() => navigation.navigate('BrandScreen', { brand: brand })} style={styles.brand}>
                 <View style={{ padding: 5, borderRadius: 5, marginTop: 10 }}>
                     <Text style={{ fontSize: 20 }}>{brand.name}</Text>
                 </View>
