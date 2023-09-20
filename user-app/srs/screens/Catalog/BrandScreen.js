@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, Image, Pressable, Animated, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable, Animated, FlatList, ScrollView, TouchableOpacity } from 'react-native';
 import { COLORS } from '../../../assets/constants/theme';
 import Header from '../../components/Header';
 import images from '../../../assets/constants/images';
@@ -9,11 +9,13 @@ import icons from '../../../assets/constants/icons';
 import dummyData from '../../../assets/constants/dummyData';
 import ItemCard from '../../components/ItemCard';
 import { useNavigation } from '@react-navigation/native';
+import Featured from '../../components/Featured';
 
 // create a component
 const BrandScreen = ({ route }) => {
     const navigation = useNavigation()
     const { brand } = route.params;
+    const categories = dummyData.Categories
 
     const [showStickyHeader, setShowStickyHeader] = useState(false);
 
@@ -34,7 +36,7 @@ const BrandScreen = ({ route }) => {
                     flexDirection: 'row',
                     alignItems: 'flex-end',
                     marginHorizontal: 0,
-                    backgroundColor: COLORS.white,
+                    backgroundColor: COLORS.secondary,
                     padding: 15,
                     borderBottomWidth: showStickyHeader ? 1 : 0, borderBottomColor: COLORS.lightGray
                 }}
@@ -88,15 +90,22 @@ const BrandScreen = ({ route }) => {
                     </View>
                     <Image source={{ uri: "https://static.itavisen.no/wp-content/uploads/2023/09/Screenshot-2023-09-12-at-20.47.01.png" }} style={{ height: 420, width: '100%' }} />
 
-                    <View style={{ backgroundColor: COLORS.lightBlack, height: 75, alignItems: 'center', padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={{ backgroundColor: COLORS.lightBlack, height: 70, alignItems: 'center', padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View>
                             <Text style={{ fontSize: 16, color: COLORS.white, fontWeight: '700' }}>From ₦ 1,200,000</Text>
                         </View>
                         <View style={{ height: 30, width: 140, backgroundColor: COLORS.white, borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 16, color: COLORS.darkPrimary }}>Buy Now</Text>
+                            <Text style={{ fontSize: 16, color: COLORS.darkPrimary, fontWeight: '700' }}>BUY NOW</Text>
                         </View>
                     </View>
                 </View>
+
+                <View style={{ marginTop: 40, marginBottom: 40 }}>
+                    <Text style={{ fontSize: 26, fontWeight: '700', marginHorizontal: 25, marginBottom: 15 }}>Featured</Text>
+                    <Featured />
+                </View>
+
+
             </ScrollView>
         </View>
     );
@@ -106,7 +115,7 @@ const BrandScreen = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: COLORS.secondary,
     },
     largeTitle: {
         fontSize: 30,
@@ -126,7 +135,21 @@ const styles = StyleSheet.create({
         zIndex: 100,
         borderBottomWidth: 0.5,
         borderBottomColor: 'gray',
-    }
+    },
+    featured: {
+        marginTop: 15,
+        marginHorizontal: 15,
+        height: 500,
+        borderRadius: 8,
+        backgroundColor: COLORS.secondary,
+    },
+    dayBrand: {
+        marginTop: 15,
+        marginHorizontal: 15,
+        height: 350,
+        borderRadius: 8,
+        backgroundColor: COLORS.secondary,
+    },
 });
 
 //make this component available to the app

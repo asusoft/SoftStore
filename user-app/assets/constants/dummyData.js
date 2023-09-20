@@ -437,6 +437,65 @@ const Items = [
     }
 ]
 
+const featuredData = [
+    {
+        id: '1',
+        title: 'iPhone 13 Pro',
+        description: 'Pro camera. Pro display. Pro performance.',
+        image: 'https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt1aaffcd4e02f0829/6319d667e3c321572216ba47/Carousel_iPhone14ProMax_Purple_Placement05-PreOrder.png?imageManager=true&impolicy=resize&width=392',
+        price: '890,000',
+        backgroundColor: 'black'
+    },
+    {
+        id: '2',
+        title: 'Apple Watch Series 9',
+        description: 'The future of health is on your wrist.',
+        image: 'https://imagineonline.store/cdn/shop/files/Apple_Watch_Series_9_Cellular_45mm_2-up_Workout_Screen__USEN_750x_ad6b225a-b417-4408-a85b-97b6abec6370_1500x.webp?v=1694616965',
+        price: '150,000',
+        backgroundColor: 'white'
+    },
+    {
+        id: '3',
+        title: 'iPhone 13 Pro',
+        description: 'Pro camera. Pro display. Pro performance.',
+        image: 'https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt1aaffcd4e02f0829/6319d667e3c321572216ba47/Carousel_iPhone14ProMax_Purple_Placement05-PreOrder.png?imageManager=true&impolicy=resize&width=392',
+        price: '890,000',
+        backgroundColor: 'white'
+    },
+    {
+        id: '4',
+        title: 'Apple Watch Series 9',
+        description: 'The future of health is on your wrist.',
+        image: 'https://imagineonline.store/cdn/shop/files/Apple_Watch_Series_9_Cellular_45mm_2-up_Workout_Screen__USEN_750x_ad6b225a-b417-4408-a85b-97b6abec6370_1500x.webp?v=1694616965',
+        price: '890,000',
+        backgroundColor: 'black'
+    },
+    {
+        id: '5',
+        title: 'Apple Watch Series 9',
+        description: 'The future of health is on your wrist.',
+        image: 'https://imagineonline.store/cdn/shop/files/Apple_Watch_Series_9_Cellular_45mm_2-up_Workout_Screen__USEN_750x_ad6b225a-b417-4408-a85b-97b6abec6370_1500x.webp?v=1694616965',
+        price: '150,000',
+        backgroundColor: 'white'
+    },
+    {
+        id: '6',
+        title: 'iPhone 13 Pro',
+        description: 'Pro camera. Pro display. Pro performance.',
+        image: 'https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt1aaffcd4e02f0829/6319d667e3c321572216ba47/Carousel_iPhone14ProMax_Purple_Placement05-PreOrder.png?imageManager=true&impolicy=resize&width=392',
+        price: '890,000',
+        backgroundColor: 'white'
+    },
+    {
+        id: '7',
+        title: 'Apple Watch Series 9',
+        description: 'The future of health is on your wrist.',
+        image: 'https://imagineonline.store/cdn/shop/files/Apple_Watch_Series_9_Cellular_45mm_2-up_Workout_Screen__USEN_750x_ad6b225a-b417-4408-a85b-97b6abec6370_1500x.webp?v=1694616965',
+        price: '890,000',
+        backgroundColor: 'black'
+    },
+];
+
 
 export default {
     OnboardingData,
@@ -447,5 +506,6 @@ export default {
     SmallAdverts,
     BigAdverts,
     Items,
-    Brands
+    Brands,
+    featuredData
 }
