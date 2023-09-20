@@ -12,12 +12,14 @@ import dummyData from '../../../assets/constants/dummyData';
 import Story from '../../components/Story';
 import Category from '../../components/Category';
 import Adverts from '../../components/Adverts';
+import ItemCard from '../../components/ItemCard';
 
 // create a component
 const HomeScreen = () => {
     const { dbUser } = useAuthContext();
     const Storie = dummyData.Stories;
     const categories = dummyData.Categories;
+    const Items = dummyData.Items;
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
@@ -111,8 +113,24 @@ const HomeScreen = () => {
                             />
                         </View>
 
-                        {/* CATEGORIES */}
+                        {/* Adverts */}
                         <Adverts />
+
+                        <View style={{ marginVertical: 20, marginHorizontal: 15 }}>
+                            <Text style={{ fontSize: 20, fontWeight: '700', marginBottom: 10 }}>Popular Items</Text>
+
+                            <FlatList
+                                data={Items}
+                                showsVerticalScrollIndicator={false}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <ItemCard />
+                                    );
+                                }}
+                                numColumns={2}
+                            />
+                        </View>
+
                     </>
                 )}
             />
