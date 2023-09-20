@@ -8,9 +8,11 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import icons from '../../../assets/constants/icons';
 import dummyData from '../../../assets/constants/dummyData';
 import ItemCard from '../../components/ItemCard';
+import { useNavigation } from '@react-navigation/native';
 
 // create a component
 const BrandScreen = ({ route }) => {
+    const navigation = useNavigation()
     const { brand } = route.params;
 
     const [showStickyHeader, setShowStickyHeader] = useState(false);
@@ -34,9 +36,11 @@ const BrandScreen = ({ route }) => {
                     marginHorizontal: 0,
                     backgroundColor: COLORS.white,
                     padding: 15,
+                    borderBottomWidth: showStickyHeader ? 1 : 0, borderBottomColor: COLORS.lightGray
                 }}
                 leftComponent={
-                    <View
+                    <Pressable
+                        onPress={() => navigation.goBack()}
                         style={{
                             alignItems: "center",
                             justifyContent: "center",
@@ -50,11 +54,11 @@ const BrandScreen = ({ route }) => {
                                 tintColor: COLORS.black
                             }}
                         />
-                    </View>
+                    </Pressable>
                 }
                 middleComponent={
                     <View style={{ marginStart: -30, opacity: showStickyHeader ? 1 : 0 }}>
-                        <Text style={{ fontSize: 20, fontWeight: '700' }}>{brand?.name} Store</Text>
+                        <Text style={{ fontSize: 20, fontWeight: '700' }}>{brand?.name}</Text>
                     </View>
                 }
                 rightComponent={
@@ -68,9 +72,31 @@ const BrandScreen = ({ route }) => {
                 }
             />
 
-            <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
-                <Text style={styles.largeTitle}>{brand?.name} Store</Text>
-                {/* Your list of chats here */}
+            <ScrollView onScroll={handleScroll} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
+                <View style={{ marginHorizontal: 20, borderBottomWidth: 0.5, borderBottomColor: COLORS.lightGray }}>
+                    <Text style={styles.largeTitle}>{brand?.name}</Text>
+                </View>
+                <View style={{ height: 100, marginTop: 10 }}>
+
+                </View>
+
+                <View style={{ marginTop: 10, flex: 1, height: 670, backgroundColor: COLORS.black }}>
+                    <View style={{ marginHorizontal: 12, paddingTop: 20, marginRight: 45, marginBottom: 30 }}>
+                        <Text style={{ fontSize: 14, color: COLORS.white, opacity: 0.6 }}>New</Text>
+                        <Text style={{ marginTop: 8, marginBottom: 10, fontSize: 30, fontWeight: '700', color: COLORS.white }}>iPhone 15 Series</Text>
+                        <Text style={{ fontSize: 15, color: COLORS.white }}>Strong, light, all-new titanium design. Apple's most advanced 48MP Main camera for incredible detail. And USB-C. Explore iPhone 15 series.</Text>
+                    </View>
+                    <Image source={{ uri: "https://static.itavisen.no/wp-content/uploads/2023/09/Screenshot-2023-09-12-at-20.47.01.png" }} style={{ height: 420, width: '100%' }} />
+
+                    <View style={{ backgroundColor: COLORS.lightBlack, height: 75, alignItems: 'center', padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View>
+                            <Text style={{ fontSize: 16, color: COLORS.white, fontWeight: '700' }}>From ₦ 1,200,000</Text>
+                        </View>
+                        <View style={{ height: 30, width: 140, backgroundColor: COLORS.white, borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
+                            <Text style={{ fontSize: 16, color: COLORS.darkPrimary }}>Buy Now</Text>
+                        </View>
+                    </View>
+                </View>
             </ScrollView>
         </View>
     );
@@ -85,8 +111,8 @@ const styles = StyleSheet.create({
     largeTitle: {
         fontSize: 30,
         fontWeight: 'bold',
-        marginVertical: 15,
-        marginHorizontal: 20
+        marginTop: 8,
+        marginBottom: 5
     },
     stickyHeader: {
         fontSize: 20,

@@ -23,7 +23,8 @@ export const COLORS = {
   darkPrimary: "#592D00",
   darkSecondary: "#EAE4DF",
   skeleton: "#D3D3D3",
-  lightPrimary: '#FCD299'
+  lightPrimary: '#FCD299',
+  lightBlack: '#1D1D1D'
 };
 
 
