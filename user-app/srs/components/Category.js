@@ -12,11 +12,11 @@ const Category = ({ category }) => {
             <Pressable style={styles.category}>
                 <Image source={{ uri: category.icon }}
                     style={{
-                        width: 100,
-                        height: 150,
+                        width: 130,
+                        height: 135,
                         resizeMode: 'contain'
                     }} />
-                <View style={{ padding: 5, borderRadius: 5 }}>
+                <View style={{ padding: 5, borderRadius: 5, marginTop: 10 }}>
                     <Text style={{ fontSize: 18 }}>{category.name}</Text>
                 </View>
             </Pressable>
@@ -30,7 +30,7 @@ export default Category;
 const styles = StyleSheet.create({
     category: {
         width: 140,
-        height: 200,
+        height: 220,
         borderRadius: 8,
         alignItems: 'center',
         justifyContent: "center",

@@ -11,6 +11,7 @@ import ActiveOrder from '../../components/ActiveOrder';
 import dummyData from '../../../assets/constants/dummyData';
 import Story from '../../components/Story';
 import Category from '../../components/Category';
+import Adverts from '../../components/Adverts';
 
 // create a component
 const HomeScreen = () => {
@@ -85,15 +86,7 @@ const HomeScreen = () => {
                             activeOpacity={0.7}
                             style={styles.dayProduct}
                         >
-                            <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
-                            <View style={{
-                                flex: 1,
-                                height: '100%',
-                                width: '100%',
-                                alignSelf: 'center',
-                                position: 'absolute', color: COLORS.secondary, fontWeight: '700', fontSize: 12, borderRadius: 8,
-                                backgroundColor: 'rgba(0, 0, 0, 0.4)', paddingHorizontal: 10, paddingVertical: 5
-                            }} />
+                            <Image source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE7AUsLcFhWooKO41LqlQHb2sw2YAgJ5mEYw&usqp=CAU" }} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
                         </TouchableOpacity>
 
                         {/* BRAND OF THE DAY */}
@@ -101,19 +94,11 @@ const HomeScreen = () => {
                             activeOpacity={0.7}
                             style={styles.dayBrand}
                         >
-                            <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
-                            <View style={{
-                                flex: 1,
-                                height: '100%',
-                                width: '100%',
-                                alignSelf: 'center',
-                                position: 'absolute', color: COLORS.secondary, fontWeight: '700', fontSize: 12, borderRadius: 8,
-                                backgroundColor: 'rgba(0, 0, 0, 0.4)', paddingHorizontal: 10, paddingVertical: 5
-                            }} />
+                            <Image source={{ uri: "https://tvadsongs.uk/wp-content/uploads/2017/09/Samsung-Galaxy-Note8-Discover-the-Note8-TV-Ad.png" }} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
                         </TouchableOpacity>
 
                         {/* CATEGORIES */}
-                        <View style={{ marginTop: 20, marginHorizontal: 10 }}>
+                        <View style={{ marginVertical: 20, marginHorizontal: 10 }}>
                             <FlatList
                                 data={categories}
                                 horizontal={true}
@@ -125,6 +110,9 @@ const HomeScreen = () => {
                                 }}
                             />
                         </View>
+
+                        {/* CATEGORIES */}
+                        <Adverts />
                     </>
                 )}
             />

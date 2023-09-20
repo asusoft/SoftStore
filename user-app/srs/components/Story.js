@@ -14,7 +14,7 @@ const Story = ({ item, setStory, setModalVisible }) => {
                 activeOpacity={0.5}
                 style={styles.container}
             >
-                <Image source={images.restaurant} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
+                <Image source={{ uri: item.image }} style={{ height: '100%', width: '100%', borderRadius: 8 }} />
                 <View style={{
                     flex: 1,
                     height: '100%',
@@ -25,8 +25,8 @@ const Story = ({ item, setStory, setModalVisible }) => {
                 }} />
 
                 <Text style={{
-                    position: 'absolute', color: COLORS.secondary, fontWeight: '700', fontSize: 14, bottom: 5, marginHorizontal: 7
-                }}>{item.title}</Text>
+                    position: 'absolute', color: COLORS.secondary, fontWeight: '600', fontSize: 14, bottom: 5, marginHorizontal: 7
+                }}>{item.name}</Text>
             </TouchableOpacity>
         </View>
     );

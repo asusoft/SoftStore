@@ -23,33 +23,33 @@ const OnboardingData = [
 const Categories = [
     {
         id: 1,
-        name: 'Fast Food',
-        icon: "https://www.citypng.com/public/uploads/small/11653329235ne77vw13spafnlhowriskdmgxggwddl7kqipk4uyzh7zjvsn4gqeedkyif1cmp6jvlxmax8nfgrpe4diquhgqlwhutw52fvpbpp2.png"
+        name: 'Mobile Phones',
+        icon: "https://mobieltjesenzo.nl/wp-content/uploads/2022/12/home-smartphone.png"
     },
     {
         id: 2,
-        name: "Pizza",
-        icon: "https://www.freeiconspng.com/thumbs/pizza-png/pizza-png-23.png"
+        name: "Laptops and Computers",
+        icon: "https://shop.unicornstore.in/uploads/images/medium/cc0d1999b8236328aff06729b8bff116.png"
     },
     {
         id: 3,
-        name: "Breakfast",
-        icon: "https://www.pngall.com/wp-content/uploads/7/Dessert-PNG-Photo.png"
+        name: "Tablets",
+        icon: "https://i01.appmifile.com/webfile/globalimg/spainOria/K82-white-2!800x800!85.png"
     },
     {
         id: 4,
-        name: "Drink",
-        icon: "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png"
+        name: "Smart Watches",
+        icon: "https://www.samsung.com/global/galaxy/galaxy-watch5-pro/images/galaxy-watch5-ecosystem-galaxy-watch5-mo.png"
     },
     {
         id: 5,
-        name: "Nuggets",
-        icon: "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png"
+        name: "Headphones",
+        icon: "https://help.apple.com/assets/61AFEC45FA5233173908347B/61B0509E1BF38548362237B5/en_US/b9f519195f84950573eea5088a49b964.png"
     },
     {
         id: 6,
-        name: "Burger",
-        icon: "https://www.citypng.com/public/uploads/small/11653329235ne77vw13spafnlhowriskdmgxggwddl7kqipk4uyzh7zjvsn4gqeedkyif1cmp6jvlxmax8nfgrpe4diquhgqlwhutw52fvpbpp2.png"
+        name: "Accessories",
+        icon: "https://www.pngall.com/wp-content/uploads/5/Mobile-Phone-Accessories-Transparent.png"
     },
 ]
 
@@ -159,17 +159,17 @@ const Stories = [
     {
         "id": 1,
         "merchantID": 1,
-        "title": "Apple Phones",
+        "name": "Apple Phones",
         "description": "Introducing our exciting new menu with delicious dishes!",
         "startDate": "2023-07-10",
         "endDate": "2023-07-15",
         "isActive": true,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg"
+        "image": "https://static.skyassets.com/contentstack/assets/blt143e20b03d72047e/blt1aaffcd4e02f0829/6319d667e3c321572216ba47/Carousel_iPhone14ProMax_Purple_Placement05-PreOrder.png?imageManager=true&impolicy=resize&width=392"
     },
     {
         "id": 2,
         "merchantID": 4,
-        "title": "Discounted products",
+        "name": "Discounted products",
         "description": "Try our exclusive Chef's Special dish crafted with care.",
         "startDate": "2023-07-05",
         "endDate": "2023-07-20",
@@ -179,7 +179,7 @@ const Stories = [
     {
         "id": 3,
         "merchantID": 3,
-        "title": "Limited-Time Offer",
+        "name": "Limited-Time Offer",
         "description": "Don't miss out on our limited-time offer with exciting discounts!",
         "startDate": "2023-07-01",
         "endDate": "2023-07-31",
@@ -189,7 +189,7 @@ const Stories = [
     {
         "id": 4,
         "merchantID": 2,
-        "title": "Celebration Catering",
+        "name": "Celebration Catering",
         "description": "Let us cater your special celebrations with our delectable dishes.",
         "startDate": "2023-07-08",
         "endDate": "2023-07-15",
@@ -199,177 +199,54 @@ const Stories = [
     {
         "id": 5,
         "merchantID": 1,
-        "title": "Happy Hour Offer",
+        "name": "Discounted items",
         "description": "Join us during happy hour for exclusive discounts on drinks and snacks.",
         "startDate": "2023-07-12",
         "endDate": "2023-07-18",
         "isActive": true,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg"
+        "image": "https://store77.net/upload/w247/imageCache/42a/ede/3be113cdc6f812ac7476477f448a5b63.png"
     }
 ]
 
-const Dishes = [
+const SmallAdverts = [
     {
         "id": "1",
-        "name": "Cheese Tequeños",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 690,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
-        categories: [1, 2],
-        isFavorite: true,
-        "rating": 3.5,
+        "image": "https://images.fonearena.com/blog/wp-content/uploads/2022/06/Nothing-Phone-1-invite-only.jpg",
     },
     {
         "id": "2",
-        "name": "Hamburger La Super Cabo Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 1010,
-        categories: [1, 3],
-        isFavorite: false,
-        "rating": 4.5,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
+        "image": "https://i.gadgets360cdn.com/large/galaxy_a54_a34_samsung_1678954854541.jpg",
     },
     {
         id: "3",
-        categories: [6],
-        isFavorite: false,
-        "rating": 4.5,
-        "name": "U.S.A. Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 430,
-        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
+        "image": "https://ee.co.uk/content/dam/everything-everywhere/images/samsung/galaxy-s23-series-images/build-s23-img_01.jpg",
     },
     {
         id: "4",
-        categories: [3, 5],
-        isFavorite: true,
-        "name": "Slices of Llanero Cheese",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 500,
-        "rating": 2.5,
+        "image": "https://www.reliancedigital.in/medias/Apple-MacBook-Laptop-41?context=bWFzdGVyfGltYWdlc3w4ODg3NnxpbWFnZS9qcGVnfGltYWdlcy9oM2UvaDYwLzk4NTAxMzk0MTA0NjIuanBnfDkzNzFiZmQ3NTAzYTYxMjQ4ODc2YjMyOTFlNjY5M2E5N2ZjZDg1NGZmZWRiYjk0Y2ZkYTJhNTk5YzI4N2Q3ODE"
     },
     {
         id: "5",
-        categories: [2, 3, 6],
-        isFavorite: false,
-        "name": "Papas Locas El Cabo",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 750,
-        "rating": 3.8,
+        "image": "https://s3b.cashify.in/gpro/uploads/2022/08/19180505/iPhone-14-Pro-Everything-You-Need-To-Know.jpg"
     },
     {
-        "id": "6",
-        "name": "Cheese Tequeños",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 690,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
-        categories: [1, 2],
-        isFavorite: true,
-        "rating": 3.5,
+        id: "6",
+        "image": "https://www.sunmobile.com.hk/TDWorld/r/cms/apple_airpods_pro2_eng/img/iphone_airPods_pro2_eng.jpg",
     },
     {
         "id": "7",
-        "name": "Hamburger La Super Cabo Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 1010,
-        categories: [1, 3],
-        isFavorite: false,
-        "rating": 4.5,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
-    },
-    {
-        id: "8",
-        categories: [6],
-        isFavorite: false,
-        "rating": 4.5,
-        "name": "U.S.A. Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 430,
-        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
-    },
-    {
-        id: "9",
-        categories: [3, 5],
-        isFavorite: true,
-        "name": "Slices of Llanero Cheese",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 500,
-        "rating": 2.5,
-    },
-    {
-        id: "10",
-        categories: [2, 3, 6],
-        isFavorite: false,
-        "name": "Papas Locas El Cabo",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 750,
-        "rating": 3.8,
-    },
-    {
-        "id": "11",
-        "name": "Cheese Tequeños",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 690,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
-        categories: [1, 2],
-        isFavorite: true,
-        "rating": 3.5,
-    },
-    {
-        "id": "12",
-        "name": "Hamburger La Super Cabo Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 1010,
-        categories: [1, 3],
-        isFavorite: false,
-        "rating": 4.5,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
-    },
-    {
-        id: "13",
-        categories: [6],
-        isFavorite: false,
-        "rating": 4.5,
-        "name": "U.S.A. Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 430,
-        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
-    },
-    {
-        id: "14",
-        categories: [3, 5],
-        isFavorite: true,
-        "name": "Slices of Llanero Cheese",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 500,
-        "rating": 2.5,
-    },
-    {
-        id: "15",
-        categories: [2, 3, 6],
-        isFavorite: false,
-        "name": "Papas Locas El Cabo",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 750,
-        "rating": 3.8,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY7e8GLznLXLtu6jt0sHzK9T7lr9nD-Rjtag&usqp=CAU",
     }
 ]
 
-const Sizes = [
+const BigAdverts = [
     {
         id: 1,
-        name: 'Small',
-        price: '750',
+        "image": "https://static.itechnics.ge/uploads/editor/273a1f7abc3e716e2a8456de6b90eb856c4ef09b540de7cf9dbfb69e4ca88a27.png"
     },
     {
         id: 2,
-        name: 'medium',
-        price: '1050',
-    },
-    {
-        id: 3,
-        name: 'Large',
-        price: '1250'
+        "image": "https://www.fono.lk/wp-content/uploads/2022/11/Tab-A8-spec-1.png"
     }
 ]
 
@@ -380,6 +257,6 @@ export default {
     Merchants,
     Offers,
     Stories,
-    Dishes,
-    Sizes
+    SmallAdverts,
+    BigAdverts
 }
