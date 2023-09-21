@@ -18,6 +18,9 @@ const BrandScreen = ({ route }) => {
     const { brand } = route.params;
     const products = dummyData.Products
 
+    const brandIdToFilter = brand?.id
+    const filteredProducts = products.filter(product => product.brandId == brandIdToFilter);
+
     const [showStickyHeader, setShowStickyHeader] = useState(false);
 
     const handleScroll = (event) => {
@@ -113,7 +116,7 @@ const BrandScreen = ({ route }) => {
                             <Text style={{ fontSize: 26, fontWeight: '700', marginBottom: 15 }}>Shop by product</Text>
 
                             <FlatList
-                                data={products}
+                                data={filteredProducts}
                                 showsVerticalScrollIndicator={false}
                                 numColumns={2}
                                 renderItem={({ item }) => {

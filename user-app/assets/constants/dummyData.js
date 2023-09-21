@@ -240,147 +240,69 @@ const BigAdverts = [
 const Items = [
     {
         "id": "1",
-        "name": "Cheese Tequeños",
+        "productID": "1",
+        "name": "iPhone 15 Pro Max",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 690,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
-        categories: [1, 2],
-        isFavorite: true,
-        "rating": 3.5,
     },
     {
         "id": "2",
-        "name": "Hamburger La Super Cabo Burger",
+        "productID": "1",
+        "name": "iPhone 15 Pro",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 1010,
-        categories: [1, 3],
-        isFavorite: false,
-        "rating": 4.5,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
     },
     {
-        id: "3",
-        categories: [6],
-        isFavorite: false,
-        "rating": 4.5,
-        "name": "U.S.A. Burger",
+        "id": "3",
+        "productID": "1",
+        "name": "iPhone 15 Plus",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 430,
-        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
     },
     {
-        id: "4",
-        categories: [3, 5],
-        isFavorite: true,
-        "name": "Slices of Llanero Cheese",
+        "id": "4",
+        "productID": "1",
+        "name": "iPhone 15",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 500,
-        "rating": 2.5,
     },
     {
-        id: "5",
-        categories: [2, 3, 6],
-        isFavorite: false,
-        "name": "Papas Locas El Cabo",
+        "id": "5",
+        "productID": "1",
+        "name": "iPhone 14 Pro Max",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 750,
-        "rating": 3.8,
     },
     {
         "id": "6",
-        "name": "Cheese Tequeños",
+        "productID": "1",
+        "name": "iPhone 14 Pro",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 690,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
-        categories: [1, 2],
-        isFavorite: true,
-        "rating": 3.5,
     },
     {
         "id": "7",
-        "name": "Hamburger La Super Cabo Burger",
+        "productID": "1",
+        "name": "iPhone 14 Plus",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 1010,
-        categories: [1, 3],
-        isFavorite: false,
-        "rating": 4.5,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
     },
     {
-        id: "8",
-        categories: [6],
-        isFavorite: false,
-        "rating": 4.5,
-        "name": "U.S.A. Burger",
+        "id": "8",
+        "productID": "1",
+        "name": "iPhone 14",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 430,
-        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
     },
     {
-        id: "9",
-        categories: [3, 5],
-        isFavorite: true,
-        "name": "Slices of Llanero Cheese",
+        "id": "9",
+        "productID": "1",
+        "name": "iPhone 13 Pro Max",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 500,
-        "rating": 2.5,
     },
     {
-        id: "10",
-        categories: [2, 3, 6],
-        isFavorite: false,
-        "name": "Papas Locas El Cabo",
+        "id": "10",
+        "productID": "1",
+        "name": "iPhone 13 Pro",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 750,
-        "rating": 3.8,
     },
     {
         "id": "11",
-        "name": "Cheese Tequeños",
+        "productID": "1",
+        "name": "iPhone 13",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 690,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
-        categories: [1, 2],
-        isFavorite: true,
-        "rating": 3.5,
-    },
-    {
-        "id": "12",
-        "name": "Hamburger La Super Cabo Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 1010,
-        categories: [1, 3],
-        isFavorite: false,
-        "rating": 4.5,
-        "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
-    },
-    {
-        id: "13",
-        categories: [6],
-        isFavorite: false,
-        "rating": 4.5,
-        "name": "U.S.A. Burger",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 430,
-        "image": "https://www.pngall.com/wp-content/uploads/5/Summer-Cocktail-PNG.png",
-    },
-    {
-        id: "14",
-        categories: [3, 5],
-        isFavorite: true,
-        "name": "Slices of Llanero Cheese",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 500,
-        "rating": 2.5,
-    },
-    {
-        id: "15",
-        categories: [2, 3, 6],
-        isFavorite: false,
-        "name": "Papas Locas El Cabo",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
-        "price": 750,
-        "rating": 3.8,
     }
 ]
 
@@ -446,33 +368,510 @@ const featuredData = [
 const Products = [
     {
         "id": "1",
+        "brandId": '1',
         "name": "iPhone",
         "image": "https://assets-global.website-files.com/5ca6f1703977261264f0212e/65044ea4e7e2a2495825fdbc_Promotional-Banner-Desktop-iphone15%20(1).webp",
     },
     {
         "id": "2",
+        "brandId": '1',
         "name": "Mac",
         "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-14-16-mac-nav-202301?wid=400&hei=260&fmt=png-alpha&.v=1670959891635",
     },
     {
         "id": "3",
+        "brandId": '1',
         "name": "iPad",
         "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-card-40-pro-202210?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1664578794100",
     },
     {
         "id": "4",
+        "brandId": '1',
         "name": "Apple Watch",
         "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202309?wid=400&hei=260&fmt=png-alpha&.v=1693703822208",
     },
     {
         "id": "5",
+        "brandId": '1',
         "name": "AirPods",
         "image": "https://help.apple.com/assets/6305096F029A2032C16D3326/63050972029A2032C16D332F/nl_NL/b9f519195f84950573eea5088a49b964.png",
     },
     {
         "id": "6",
+        "brandId": '1',
         "name": "Accessories",
         "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-accessories-nav-202309?wid=400&hei=260&fmt=png-alpha&.v=1692803114952",
+    },
+]
+
+const Images = [
+    {
+        'id': '1',
+        'itemId': '1',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-3-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081545199",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081545196",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081544863",
+        ]
+    },
+    {
+        'id': '2',
+        'itemId': '2',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15pro-digitalmat-gallery-3-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081542150",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081545196",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081544863",
+        ]
+    },
+    {
+        'id': '3',
+        'itemId': '3',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169045",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169178",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-6-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169183"
+        ]
+    },
+    {
+        'id': '4',
+        'itemId': '4',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169045",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169178",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-6-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169183"
+        ]
+    },
+    {
+        'id': '5',
+        'itemId': '5',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169045",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169178",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-6-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169183"
+        ]
+    },
+    {
+        'id': '6',
+        'itemId': '6',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169045",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169178",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-6-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169183"
+        ]
+    },
+    {
+        'id': '7',
+        'itemId': '7',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14-digitalmat-gallery-3-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055813794",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-4-202303?wid=728&hei=666&fmt=png-alpha&.v=1676510300912",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-5-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055808782"
+        ]
+    },
+    {
+        'id': '8',
+        'itemId': '8',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169045",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169178",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-6-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169183"
+        ]
+    },
+    {
+        'id': '9',
+        'itemId': '9',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14-digitalmat-gallery-3-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055813794",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-4-202303?wid=728&hei=666&fmt=png-alpha&.v=1676510300912",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-5-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055808782"
+        ]
+    },
+    {
+        'id': '10',
+        'itemId': '10',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169045",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169178",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-6-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169183"
+        ]
+    },
+    {
+        'id': '11',
+        'itemId': '11',
+        'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14-digitalmat-gallery-3-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055813794",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-4-202303?wid=728&hei=666&fmt=png-alpha&.v=1676510300912",
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-5-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055808782"
+        ]
+    }
+]
+
+const Sizes = [
+    {
+        "id": "1",
+        "itemID": "1",
+        "value": "blue",
+        "price": 999.99
+    },
+    {
+        "id": "2",
+        "itemID": "1",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "3",
+        "itemID": "1",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "4",
+        "itemID": "2",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "5",
+        "itemID": "2",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "6",
+        "itemID": "2",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "7",
+        "itemID": "3",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "8",
+        "itemID": "4",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "9",
+        "itemID": "3",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "10",
+        "itemID": "4",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "11",
+        "itemID": "4",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "12",
+        "itemID": "4",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "13",
+        "itemID": "5",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "14",
+        "itemID": "5",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "15",
+        "itemID": "5",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "16",
+        "itemID": "6",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "17",
+        "itemID": "6",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "18",
+        "itemID": "6",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "19",
+        "itemID": "7",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "20",
+        "itemID": "7",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "21",
+        "itemID": "7",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "22",
+        "itemID": "8",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "23",
+        "itemID": "8",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "24",
+        "itemID": "8",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "25",
+        "itemID": "9",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "26",
+        "itemID": "9",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "27",
+        "itemID": "9",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "28",
+        "itemID": "10",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "29",
+        "itemID": "10",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "30",
+        "itemID": "10",
+        "value": "purple",
+        "price": 999.99
+    },
+    {
+        "id": "31",
+        "itemID": "11",
+        "value": "128GB",
+        "price": 999.99
+    },
+    {
+        "id": "32",
+        "itemID": "11",
+        "value": "black",
+        "price": 1149.99
+    },
+    {
+        "id": "33",
+        "itemID": "11",
+        "value": "purple",
+        "price": 999.99
+    },
+]
+
+const Colours = [
+    {
+        "id": "1",
+        "itemID": "1",
+        "value": "blue",
+    },
+    {
+        "id": "2",
+        "itemID": "1",
+        "value": "black",
+    },
+    {
+        "id": "3",
+        "itemID": "1",
+        "value": "purple",
+    },
+    {
+        "id": "4",
+        "itemID": "2",
+        "value": "blue",
+    },
+    {
+        "id": "5",
+        "itemID": "2",
+        "value": "black",
+    },
+    {
+        "id": "6",
+        "itemID": "2",
+        "value": "purple",
+    },
+    {
+        "id": "7",
+        "itemID": "3",
+        "value": "blue",
+    },
+    {
+        "id": "8",
+        "itemID": "4",
+        "value": "black",
+    },
+    {
+        "id": "9",
+        "itemID": "3",
+        "value": "purple",
+    },
+    {
+        "id": "10",
+        "itemID": "4",
+        "value": "blue",
+    },
+    {
+        "id": "11",
+        "itemID": "4",
+        "value": "black",
+    },
+    {
+        "id": "12",
+        "itemID": "4",
+        "value": "purple",
+    },
+    {
+        "id": "13",
+        "itemID": "5",
+        "value": "blue",
+    },
+    {
+        "id": "14",
+        "itemID": "5",
+        "value": "black",
+    },
+    {
+        "id": "15",
+        "itemID": "5",
+        "value": "purple",
+    },
+    {
+        "id": "16",
+        "itemID": "6",
+        "value": "blue",
+    },
+    {
+        "id": "17",
+        "itemID": "6",
+        "value": "black",
+    },
+    {
+        "id": "18",
+        "itemID": "6",
+        "value": "purple",
+    },
+    {
+        "id": "19",
+        "itemID": "7",
+        "value": "blue",
+    },
+    {
+        "id": "20",
+        "itemID": "7",
+        "value": "black",
+    },
+    {
+        "id": "21",
+        "itemID": "7",
+        "value": "purple",
+    },
+    {
+        "id": "22",
+        "itemID": "8",
+        "value": "blue",
+    },
+    {
+        "id": "23",
+        "itemID": "8",
+        "value": "black",
+    },
+    {
+        "id": "24",
+        "itemID": "8",
+        "value": "purple",
+    },
+    {
+        "id": "25",
+        "itemID": "9",
+        "value": "blue",
+    },
+    {
+        "id": "26",
+        "itemID": "9",
+        "value": "black",
+    },
+    {
+        "id": "27",
+        "itemID": "9",
+        "value": "purple",
+    },
+    {
+        "id": "28",
+        "itemID": "10",
+        "value": "blue",
+    },
+    {
+        "id": "29",
+        "itemID": "10",
+        "value": "black",
+    },
+    {
+        "id": "30",
+        "itemID": "10",
+        "value": "purple",
+    },
+    {
+        "id": "31",
+        "itemID": "11",
+        "value": "blue",
+    },
+    {
+        "id": "32",
+        "itemID": "11",
+        "value": "black",
+    },
+    {
+        "id": "33",
+        "itemID": "11",
+        "value": "purple",
     },
 ]
 
@@ -481,12 +880,14 @@ export default {
     OnboardingData,
     Categories,
     Merchants,
-    Offers,
     Stories,
     SmallAdverts,
     BigAdverts,
     Items,
     Brands,
     featuredData,
-    Products
+    Products,
+    Images,
+    Sizes,
+    Colours
 }
