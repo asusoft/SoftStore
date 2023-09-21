@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         padding: 10,
         borderRadius: 10,
-        backgroundColor: COLORS.secondary
+        backgroundColor: COLORS.white
     },
     locationIcon: {
         marginLeft: 25

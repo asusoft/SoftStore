@@ -1228,7 +1228,7 @@ PODS:
     - RNFBApp
   - RNGestureHandler (2.12.0):
     - React-Core
-  - RNScreens (3.20.0):
+  - RNScreens (3.21.1):
     - React-Core
     - React-RCTImage
   - Yoga (1.14.0)
@@ -1501,7 +1501,7 @@ SPEC CHECKSUMS:
   RNFBDatabase: 0464920901f4d9d1881a88f1c4ac22c463d6280b
   RNFBFirestore: 2e1bebf2b621348e1ae696309297e1f683eb1178
   RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
-  RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
+  RNScreens: d3675ab2878704de70c9dae57fa5d024802404cc
   Yoga: 065f0b74dba4832d6e328238de46eb72c5de9556
 
 PODFILE CHECKSUM: 99703db5d1862aaa3d4c5e251b1e581cb70ea6a3

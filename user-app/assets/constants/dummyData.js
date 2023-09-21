@@ -142,59 +142,6 @@ const Merchants = [
     }
 ]
 
-const Offers = [
-    {
-        "id": 1,
-        "title": "Weekend Brunch Special",
-        "description": "Enjoy a delicious brunch with a variety of options.",
-        "merchantID": 3,
-        "startDate": "2023-07-10",
-        "endDate": "2023-07-12",
-        "isActive": true,
-        "image": "http://dummyimage.com/132x100.png/5fa2dd/ffffff"
-    },
-    {
-        "id": 2,
-        "title": "Family Meal Deal",
-        "description": "Order a family-sized meal with a discount for your loved ones.",
-        "merchantID": 4,
-        "startDate": "2023-07-05",
-        "endDate": "2023-07-15",
-        "isActive": true,
-        "image": "http://dummyimage.com/111x100.png/cc0000/ffffff"
-    },
-    {
-        "id": 3,
-        "title": "Happy Hour Drinks",
-        "description": "Get discounted prices on selected drinks during our happy hour.",
-        "merchantID": 2,
-        "startDate": "2023-07-01",
-        "endDate": "2023-07-31",
-        "isActive": true,
-        "image": "http://dummyimage.com/184x100.png/ff4444/ffffff"
-    },
-    {
-        "id": 4,
-        "title": "Lunch Combo",
-        "description": "Try our special lunch combo with a main dish, side, and beverage.",
-        "merchantID": 1,
-        "startDate": "2023-07-08",
-        "endDate": "2023-07-20",
-        "isActive": true,
-        "image": "http://dummyimage.com/129x100.png/cc0000/ffffff"
-    },
-    {
-        "id": 5,
-        "title": "Dessert Delight",
-        "description": "Indulge in our heavenly desserts and satisfy your sweet tooth.",
-        "merchantID": 2,
-        "startDate": "2023-07-12",
-        "endDate": "2023-07-18",
-        "isActive": true,
-        "image": "http://dummyimage.com/160x100.png/5fa2dd/ffffff"
-    }
-]
-
 const Stories = [
     {
         "id": 1,

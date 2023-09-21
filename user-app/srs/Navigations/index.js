@@ -19,6 +19,7 @@ import { useAuthContext } from "../contexts/AuthContext";
 
 import { COLORS } from "../../assets/constants/theme";
 import icons from "../../assets/constants/icons";
+import ProductScreen from "../screens/Catalog/ProductScreen";
 
 
 const RootStack = createNativeStackNavigator();
@@ -213,6 +214,15 @@ const CatalogStackNavigator = () => {
             <CatalogStack.Screen
                 name="BrandScreen"
                 component={BrandScreen}
+            />
+            <CatalogStack.Screen
+                name="ProductScreen"
+                options={({ route }) => ({
+                    title: route.params.title,
+                    headerShown: true,
+                    headerBackTitle: route.params.back
+                })}
+                component={ProductScreen}
             />
         </CatalogStack.Navigator>
     );

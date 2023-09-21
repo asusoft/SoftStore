@@ -75,65 +75,72 @@ const BrandScreen = ({ route }) => {
                 }
             />
 
-            <ScrollView onScroll={handleScroll} scrollEventThrottle={16} showsVerticalScrollIndicator={false}>
-                <View style={{ marginHorizontal: 20, borderBottomWidth: 0.5, borderBottomColor: COLORS.lightGray }}>
-                    <Text style={styles.largeTitle}>{brand?.name}</Text>
-                </View>
-                <View style={{ height: 100, marginTop: 10 }}>
-
-                </View>
-
-                <View style={{ marginTop: 10, flex: 1, height: 670, backgroundColor: COLORS.black }}>
-                    <View style={{ marginHorizontal: 12, paddingTop: 20, marginRight: 45, marginBottom: 30 }}>
-                        <Text style={{ fontSize: 14, color: COLORS.white, opacity: 0.6 }}>New</Text>
-                        <Text style={{ marginTop: 8, marginBottom: 10, fontSize: 30, fontWeight: '700', color: COLORS.white }}>iPhone 15 Series</Text>
-                        <Text style={{ fontSize: 15, color: COLORS.white }}>Strong, light, all-new titanium design. Apple's most advanced 48MP Main camera for incredible detail. And USB-C. Explore iPhone 15 series.</Text>
-                    </View>
-                    <Image source={{ uri: "https://static.itavisen.no/wp-content/uploads/2023/09/Screenshot-2023-09-12-at-20.47.01.png" }} style={{ height: 420, width: '100%' }} />
-
-                    <View style={{ backgroundColor: COLORS.lightBlack, height: 70, alignItems: 'center', padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <View>
-                            <Text style={{ fontSize: 16, color: COLORS.white, fontWeight: '700' }}>From ₦ 1,200,000</Text>
+            <FlatList
+                onScroll={handleScroll} scrollEventThrottle={16} showsVerticalScrollIndicator={false}
+                ListHeaderComponent={() => (
+                    <>
+                        <View style={{ marginHorizontal: 20, borderBottomWidth: 0.5, borderBottomColor: COLORS.lightGray }}>
+                            <Text style={styles.largeTitle}>{brand?.name}</Text>
                         </View>
-                        <View style={{ height: 30, width: 140, backgroundColor: COLORS.white, borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
-                            <Text style={{ fontSize: 16, color: COLORS.darkPrimary, fontWeight: '700' }}>BUY NOW</Text>
+                        <View style={{ height: 100, marginTop: 10 }}>
+
                         </View>
-                    </View>
-                </View>
 
-                <View style={{ marginTop: 40, marginBottom: 40 }}>
-                    <Text style={{ fontSize: 26, fontWeight: '700', marginHorizontal: 25, marginBottom: 15 }}>Featured</Text>
-                    <Featured />
-                </View>
+                        <View style={{ marginTop: 10, flex: 1, height: 670, backgroundColor: COLORS.black }}>
+                            <View style={{ marginHorizontal: 12, paddingTop: 20, marginRight: 45, marginBottom: 30 }}>
+                                <Text style={{ fontSize: 14, color: COLORS.white, opacity: 0.6 }}>New</Text>
+                                <Text style={{ marginTop: 8, marginBottom: 10, fontSize: 30, fontWeight: '700', color: COLORS.white }}>iPhone 15 Series</Text>
+                                <Text style={{ fontSize: 15, color: COLORS.white }}>Strong, light, all-new titanium design. Apple's most advanced 48MP Main camera for incredible detail. And USB-C. Explore iPhone 15 series.</Text>
+                            </View>
+                            <Image source={{ uri: "https://static.itavisen.no/wp-content/uploads/2023/09/Screenshot-2023-09-12-at-20.47.01.png" }} style={{ height: 420, width: '100%' }} />
 
-                <View style={{ marginBottom: 40, paddingHorizontal: 25 }}>
-                    <Text style={{ fontSize: 26, fontWeight: '700', marginBottom: 15 }}>Shop by product</Text>
-
-                    <FlatList
-                        data={products}
-                        showsVerticalScrollIndicator={false}
-                        numColumns={2}
-                        renderItem={({ item }) => {
-                            return (
-                                <View style={{ margin: 5, width: 165 }}>
-                                    <Pressable style={styles.product}>
-                                        <Text style={{ fontSize: 16, marginVertical: 15, fontWeight: '700', marginHorizontal: 5 }}>{item.name}</Text>
-                                        <Image source={{ uri: item.image }}
-                                            style={{
-                                                width: "100%",
-                                                height: 165,
-                                                resizeMode: 'contain'
-                                            }} />
-                                    </Pressable>
+                            <View style={{ backgroundColor: COLORS.lightBlack, height: 70, alignItems: 'center', padding: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <View>
+                                    <Text style={{ fontSize: 16, color: COLORS.white, fontWeight: '700' }}>From ₦ 1,200,000</Text>
                                 </View>
-                            );
-                        }}
-                    />
-                </View>
+                                <View style={{ height: 30, width: 140, backgroundColor: COLORS.white, borderRadius: 25, alignItems: 'center', justifyContent: 'center' }}>
+                                    <Text style={{ fontSize: 16, color: COLORS.darkPrimary, fontWeight: '700' }}>BUY NOW</Text>
+                                </View>
+                            </View>
+                        </View>
 
-                <SoftTrade />
-                <Image source={{ uri: "https://www.jumpplus.com/web/image/1247938-75a9817e/Multi-Product_MacBook_Air_M2_chip_iPad_10th-gen_AirPods_3rd-Gen_iPhone_14_Plus_iPhone_14_Apple_Watch_SE_Screen__USEN.png" }} style={{ width: '100%', height: 250 }} resizeMode='contain' />
-            </ScrollView>
+                        <View style={{ marginTop: 40, marginBottom: 40 }}>
+                            <Text style={{ fontSize: 26, fontWeight: '700', marginHorizontal: 25, marginBottom: 15 }}>Featured</Text>
+                            <Featured />
+                        </View>
+
+                        <View style={{ marginBottom: 40, paddingHorizontal: 25 }}>
+                            <Text style={{ fontSize: 26, fontWeight: '700', marginBottom: 15 }}>Shop by product</Text>
+
+                            <FlatList
+                                data={products}
+                                showsVerticalScrollIndicator={false}
+                                numColumns={2}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <View style={{ margin: 5, width: 165 }}>
+                                            <Pressable onPress={() => navigation.navigate("ProductScreen", { product: item, title: item.name, back: brand?.name })} style={styles.product}>
+                                                <Text style={{ fontSize: 16, marginVertical: 15, fontWeight: '700', marginHorizontal: 5 }}>{item.name}</Text>
+                                                <Image source={{ uri: item.image }}
+                                                    style={{
+                                                        width: "100%",
+                                                        height: 165,
+                                                        resizeMode: 'contain'
+                                                    }} />
+                                            </Pressable>
+                                        </View>
+                                    );
+                                }}
+                            />
+                        </View>
+
+                        <SoftTrade />
+                        <Image source={{ uri: "https://www.jumpplus.com/web/image/1247938-75a9817e/Multi-Product_MacBook_Air_M2_chip_iPad_10th-gen_AirPods_3rd-Gen_iPhone_14_Plus_iPhone_14_Apple_Watch_SE_Screen__USEN.png" }} style={{ width: '100%', height: 250 }} resizeMode='contain' />
+
+
+                    </>
+                )}
+            />
         </View>
     );
 };
