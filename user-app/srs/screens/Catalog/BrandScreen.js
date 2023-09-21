@@ -10,12 +10,13 @@ import dummyData from '../../../assets/constants/dummyData';
 import ItemCard from '../../components/ItemCard';
 import { useNavigation } from '@react-navigation/native';
 import Featured from '../../components/Featured';
+import SoftTrade from '../../components/SoftTrade';
 
 // create a component
 const BrandScreen = ({ route }) => {
     const navigation = useNavigation()
     const { brand } = route.params;
-    const categories = dummyData.Categories
+    const products = dummyData.Products
 
     const [showStickyHeader, setShowStickyHeader] = useState(false);
 
@@ -36,7 +37,7 @@ const BrandScreen = ({ route }) => {
                     flexDirection: 'row',
                     alignItems: 'flex-end',
                     marginHorizontal: 0,
-                    backgroundColor: COLORS.secondary,
+                    backgroundColor: COLORS.background,
                     padding: 15,
                     borderBottomWidth: showStickyHeader ? 1 : 0, borderBottomColor: COLORS.lightGray
                 }}
@@ -105,7 +106,33 @@ const BrandScreen = ({ route }) => {
                     <Featured />
                 </View>
 
+                <View style={{ marginBottom: 40, paddingHorizontal: 25 }}>
+                    <Text style={{ fontSize: 26, fontWeight: '700', marginBottom: 15 }}>Shop by product</Text>
 
+                    <FlatList
+                        data={products}
+                        showsVerticalScrollIndicator={false}
+                        numColumns={2}
+                        renderItem={({ item }) => {
+                            return (
+                                <View style={{ margin: 5, width: 165 }}>
+                                    <Pressable style={styles.product}>
+                                        <Text style={{ fontSize: 16, marginVertical: 15, fontWeight: '700', marginHorizontal: 5 }}>{item.name}</Text>
+                                        <Image source={{ uri: item.image }}
+                                            style={{
+                                                width: "100%",
+                                                height: 165,
+                                                resizeMode: 'contain'
+                                            }} />
+                                    </Pressable>
+                                </View>
+                            );
+                        }}
+                    />
+                </View>
+
+                <SoftTrade />
+                <Image source={{ uri: "https://www.jumpplus.com/web/image/1247938-75a9817e/Multi-Product_MacBook_Air_M2_chip_iPad_10th-gen_AirPods_3rd-Gen_iPhone_14_Plus_iPhone_14_Apple_Watch_SE_Screen__USEN.png" }} style={{ width: '100%', height: 250 }} resizeMode='contain' />
             </ScrollView>
         </View>
     );
@@ -115,7 +142,7 @@ const BrandScreen = ({ route }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.secondary,
+        backgroundColor: COLORS.background,
     },
     largeTitle: {
         fontSize: 30,
@@ -136,19 +163,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.5,
         borderBottomColor: 'gray',
     },
-    featured: {
-        marginTop: 15,
-        marginHorizontal: 15,
-        height: 500,
-        borderRadius: 8,
-        backgroundColor: COLORS.secondary,
-    },
-    dayBrand: {
-        marginTop: 15,
-        marginHorizontal: 15,
-        height: 350,
-        borderRadius: 8,
-        backgroundColor: COLORS.secondary,
+    product: {
+        paddingHorizontal: 10,
+        width: 165,
+        height: 240,
+        borderRadius: 18,
+        marginRight: 10,
+        backgroundColor: COLORS.white,
     },
 });
 
