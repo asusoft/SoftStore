@@ -221,7 +221,8 @@ const CatalogStackNavigator = () => {
                 options={({ route }) => ({
                     title: route.params.title,
                     headerShown: true,
-                    headerBackTitle: route.params.back
+                    headerBackTitle: route.params.back,
+                    headerTintColor: COLORS.darkPrimary
                 })}
                 component={ProductScreen}
             />
@@ -230,7 +231,8 @@ const CatalogStackNavigator = () => {
                 options={({ route }) => ({
                     title: '',
                     headerShown: true,
-                    headerBackTitle: route.params.back
+                    headerBackTitle: route.params.back,
+                    headerTintColor: COLORS.darkPrimary
                 })}
                 component={ItemInfoScreen}
             />

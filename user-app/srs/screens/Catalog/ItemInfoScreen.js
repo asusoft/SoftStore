@@ -1,10 +1,11 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Animated, FlatList, Dimensions, Image, Pressable } from 'react-native';
 import { COLORS } from '../../../assets/constants/theme';
 import dummyData from '../../../assets/constants/dummyData';
 import icons from '../../../assets/constants/icons';
 import ItemCard from '../../components/ItemCard';
+import FooterButton from '../../components/FooterButton';
 
 // create a component
 const ItemInfoScreen = ({ route }) => {
@@ -19,8 +20,30 @@ const ItemInfoScreen = ({ route }) => {
     const itemSizesArray = Sizes.filter(size => size.itemID == item.item.id);
     const itemSizes = itemSizesArray || [];
 
+    const [selectedSize, setSelectedSize] = useState(-1);
+    const [selectedColor, setSelectedColor] = useState(-1);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(-1);
+
+    const [showPreview, setShowPreview] = useState(false)
+
     const { width, height } = Dimensions.get('screen');
     const scrollX = React.useRef(new Animated.Value(0)).current;
+
+    const isEnableAddToBag = () => {
+        return (
+            selectedSize !== -1 &&
+            selectedColor !== -1 &&
+            selectedPaymentMethod !== -1
+        );
+    };
+
+    const handlePress = () => {
+        if (showPreview) {
+            console.log("Adding to bag");
+        } else {
+            setShowPreview(true);
+        }
+    };
 
     function RenderImages() {
         return (
@@ -97,6 +120,7 @@ const ItemInfoScreen = ({ route }) => {
                         <View
                         >
                             <Pressable
+                                onPress={() => { setSelectedColor(index) }}
                                 style={{
                                     marginTop: 20,
                                     marginRight: 30,
@@ -105,16 +129,17 @@ const ItemInfoScreen = ({ route }) => {
                                     backgroundColor: COLORS.lightGray,
                                     borderRadius: 12,
                                     borderWidth: 2,
-                                    borderColor: COLORS.lightGray,
+                                    borderColor: selectedColor === index
+                                        ? COLORS.darkPrimary : COLORS.lightGray,
                                     padding: 5,
                                     opacity: 1,
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}
                             >
-                                <View style={{ height: 25, width: 25, borderRadius: 15, backgroundColor: item.value, opacity: 0.3 }} />
+                                <View style={{ height: 25, width: 25, borderRadius: 15, backgroundColor: item.value, opacity: selectedColor === index ? 1 : 0.3 }} />
 
-                                <Text style={{ marginTop: 5, fontSize: 16, opacity: 0.3 }}>{item.name}</Text>
+                                <Text style={{ marginTop: 5, fontSize: 16, opacity: selectedColor === index ? 1 : 0.3 }}>{item.name} {index}</Text>
 
                             </Pressable>
                         </View>
@@ -135,6 +160,7 @@ const ItemInfoScreen = ({ route }) => {
                         <View
                         >
                             <Pressable
+                                onPress={() => { setSelectedSize(index) }}
                                 style={{
                                     marginTop: 20,
                                     marginRight: 30,
@@ -143,15 +169,16 @@ const ItemInfoScreen = ({ route }) => {
                                     backgroundColor: COLORS.lightGray,
                                     borderRadius: 12,
                                     borderWidth: 2,
-                                    borderColor: COLORS.lightGray,
+                                    borderColor: selectedSize === index
+                                        ? COLORS.darkPrimary : COLORS.lightGray,
                                     padding: 5,
                                     opacity: 1,
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}
                             >
-                                <Text style={{ marginTop: 5, fontSize: 16, opacity: 0.3 }}>{item.value}</Text>
-                                <Text style={{ marginTop: 5, fontSize: 16, opacity: 0.3 }}>₦ {item.price}</Text>
+                                <Text style={{ marginTop: 5, fontSize: 16, opacity: selectedSize === index ? 1 : 0.3 }}>{item.value}</Text>
+                                <Text style={{ marginTop: 5, fontSize: 16, opacity: selectedSize === index ? 1 : 0.3 }}>₦ {item.price}</Text>
                             </Pressable>
                         </View>
                     )}
@@ -165,10 +192,13 @@ const ItemInfoScreen = ({ route }) => {
             <View style={{ paddingHorizontal: 30, marginBottom: 20, marginTop: 10 }}>
                 <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>How Would You Like to Proceed?</Text>
                 <Pressable
+                    onPress={() => { setSelectedPaymentMethod(0) }}
                     style={{
                         opacity: 1,
                         backgroundColor: COLORS.lightGray,
-                        borderColor: COLORS.lightGray,
+                        borderWidth: 2,
+                        borderColor: selectedPaymentMethod === 0
+                            ? COLORS.darkPrimary : COLORS.lightGray,
                         ...styles.paymentMethod
                     }}
                 >
@@ -179,10 +209,12 @@ const ItemInfoScreen = ({ route }) => {
                 </Pressable>
 
                 <Pressable
+                    onPress={() => { setSelectedPaymentMethod(1) }}
                     style={{
                         opacity: 1,
                         backgroundColor: COLORS.lightGray,
-                        borderColor: COLORS.lightGray,
+                        borderColor: selectedPaymentMethod === 1
+                            ? COLORS.darkPrimary : COLORS.lightGray,
                         ...styles.paymentMethod
                     }}
                 >
@@ -271,106 +303,150 @@ const ItemInfoScreen = ({ route }) => {
         )
     }
 
-    return (
-        <FlatList
-            showsVerticalScrollIndicator={false}
-            ListHeaderComponent={() => (
-                <>
-                    <View style={{
-                        height: 350,
-                        backgroundColor: COLORS.white,
-                        alignItems: 'center',
-                    }}>
-                        {RenderImages()}
-                        <Indicator scrollX={scrollX} />
-                    </View>
-                    <View style={{ backgroundColor: COLORS.lightGray2, paddingVertical: 25, width: '100%', paddingHorizontal: 30, alignItems: 'center' }}>
-                        <Text style={{ fontSize: 24, fontWeight: '600' }}>Buy {item.item.name}</Text>
-                        <Text style={{ fontSize: 16, marginTop: 5 }}>Starts from ₦ 1,200,000</Text>
-                    </View>
-                    <View style={{ paddingHorizontal: 30, backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.lightGray, borderBottomColor: COLORS.lightGray, borderBottomWidth: 1 }}>
-                        <Pressable style={{ height: 60, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Know the Specs</Text>
-                            <Image source={icons.forward} style={{ height: 20, width: 20 }} />
-                        </Pressable>
-                    </View>
-
-                    <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
-                        <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Paint Your Preference.</Text>
-                        <ColorPicker />
-                    </View>
-                    <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
-                        <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Storage Solutions: Which Fits You Best?</Text>
-                        <StoragePicker />
-                    </View>
-                    <RenderInBox />
-                    <View style={{ backgroundColor: COLORS.white, paddingVertical: 25, width: '100%', paddingHorizontal: 25 }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Complete Your Setup</Text>
-                        <View style={{ marginVertical: 20 }}>
-                            <FlatList
-                                data={itemImagesArray}
-                                showsVerticalScrollIndicator={false}
-                                pagingEnabled={true}
-                                decelerationRate={'fast'}
-                                snapToAlignment={'center'}
-                                snapToInterval={180}
-                                renderItem={({ item }) => {
-                                    return (
-                                        <ItemCard />
-                                    );
-                                }}
-                                horizontal
-                                showsHorizontalScrollIndicator={false}
-                            />
+    function RenderFooter() {
+        return (
+            <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: COLORS.lightGray2, padding: 10 }}>
+                {
+                    showPreview ? (
+                        <View style={{ flexDirection: 'row', marginBottom: 10, }}>
+                            <Image source={{ uri: itemImagesArray[1] }} style={{ height: 70, width: 70 }} />
+                            <View style={{ marginLeft: 30 }}>
+                                <Text style={{ fontSize: 18, marginBottom: 5, fontWeight: '600' }}>{item.item.name}</Text>
+                                <Text style={{ fontSize: 18, marginBottom: 5 }}>{itemColorsArray[selectedColor].name}</Text>
+                                <Text style={{ fontSize: 16, marginBottom: 5 }}>{itemSizesArray[selectedSize].value}</Text>
+                                <Text style={{ fontSize: 18, marginBottom: 5, fontWeight: '700' }}>₦ {itemSizesArray[selectedSize].price}</Text>
+                                <Text style={{ fontSize: 16, marginBottom: 5 }}>{selectedPaymentMethod === 0 ? 'SoftTrade' : 'Cash Payment'}</Text>
+                            </View>
+                            <Pressable onPress={() => setShowPreview(false)} style={{ flex: 1, alignItems: 'flex-end', paddingHorizontal: 20 }}>
+                                <Image source={icons.cross} style={{ height: 25, width: 25 }} />
+                            </Pressable>
                         </View>
-                    </View>
-                    {RenderPaymentMethod()}
-                    <View style={{ backgroundColor: COLORS.white, paddingVertical: 25, width: '100%', paddingHorizontal: 30, alignItems: 'center' }}>
-                        <Text style={{ fontSize: 20, fontWeight: '600' }}>Can't decide Your choice?</Text>
-                        <Text style={{ fontSize: 16, marginTop: 5 }}>Talk to our specialist</Text>
-                    </View>
+                    ) : []
+                }
+                <FooterButton
+                    disabled={false}
+                    label={showPreview ? "Add to Bag" : "Preview Your Choise"}
+                    labelStyle={{
+                        fontWeight: '500',
+                        fontSize: 18
+                    }}
+                    footerStyle={{
+                        marginTop: 2,
+                        height: 45,
+                        marginHorizontal: 0,
+                        borderRadius: 8,
+                        backgroundColor: COLORS.darkPrimary
+                    }}
+                    onPress={handlePress}
+                />
+            </View>
+        )
+    }
 
-                    <View style={{ paddingHorizontal: 30, backgroundColor: COLORS.lightGray2, borderTopWidth: 1, borderTopColor: COLORS.lightGray, borderBottomColor: COLORS.lightGray, borderBottomWidth: 1 }}>
-                        <Pressable style={{ height: 60, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: COLORS.primary }}>Compare & Decide </Text>
-                            <Image source={icons.forward} style={{ height: 20, width: 20, tintColor: COLORS.primary }} />
-                        </Pressable>
-                    </View>
-
-                    <View style={{ paddingHorizontal: 30, backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.lightGray, borderBottomColor: COLORS.lightGray, borderBottomWidth: 1, paddingTop: 30 }}>
-                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 15 }}>Delivery Information</Text>
-                        <Pressable style={{ height: 60, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: COLORS.lightGray, }}>
-                            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Get It in Kano</Text>
-                            <View style={{ flexDirection: 'row', }}>
-                                <Text style={{ fontSize: 16, marginEnd: 10 }}>Other</Text>
+    return (
+        <>
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                ListHeaderComponent={() => (
+                    <>
+                        <View style={{
+                            height: 350,
+                            backgroundColor: COLORS.white,
+                            alignItems: 'center',
+                        }}>
+                            {RenderImages()}
+                            <Indicator scrollX={scrollX} />
+                        </View>
+                        <View style={{ backgroundColor: COLORS.lightGray2, paddingVertical: 25, width: '100%', paddingHorizontal: 30, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 24, fontWeight: '600' }}>Buy {item.item.name}</Text>
+                            <Text style={{ fontSize: 16, marginTop: 5 }}>Starts from ₦ 1,200,000</Text>
+                        </View>
+                        <View style={{ paddingHorizontal: 30, backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.lightGray, borderBottomColor: COLORS.lightGray, borderBottomWidth: 1 }}>
+                            <Pressable style={{ height: 60, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Know the Specs</Text>
                                 <Image source={icons.forward} style={{ height: 20, width: 20 }} />
-                            </View>
-                        </Pressable>
-                        <Pressable style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: COLORS.lightGray, paddingVertical: 20 }}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <Image source={icons.pickUp} style={{ height: 30, width: 30, alignSelf: 'center', marginEnd: 8 }} />
-                                <View>
-                                    <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 6 }}>Self Pick-Up in Kano</Text>
-                                    <Text>from 1 to 3 days</Text>
-                                </View>
-                            </View>
-                            <Text style={{ fontSize: 16, marginEnd: 10 }}>Free</Text>
-                        </Pressable>
-                        <Pressable style={{ paddingVertical: 20, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: COLORS.lightGray, }}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <Image source={icons.delivery} style={{ height: 30, width: 30, alignSelf: 'center', marginEnd: 8 }} />
-                                <View>
-                                    <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 6 }}>Delivery across Kano</Text>
-                                    <Text>from 1 to 3 days</Text>
-                                </View>
-                            </View>
-                            <Text style={{ fontSize: 16, marginEnd: 10 }}>₦ 1500</Text>
-                        </Pressable>
-                    </View>
-                </>
-            )}
-        />
+                            </Pressable>
+                        </View>
 
+                        <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
+                            <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Paint Your Preference.</Text>
+                            <ColorPicker />
+                        </View>
+                        <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
+                            <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Storage Solutions: Which Fits You Best?</Text>
+                            <StoragePicker />
+                        </View>
+                        <RenderInBox />
+                        <View style={{ backgroundColor: COLORS.white, paddingVertical: 25, width: '100%', paddingHorizontal: 25 }}>
+                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Complete Your Setup</Text>
+                            <View style={{ marginVertical: 20 }}>
+                                <FlatList
+                                    data={itemImagesArray}
+                                    showsVerticalScrollIndicator={false}
+                                    pagingEnabled={true}
+                                    decelerationRate={'fast'}
+                                    snapToAlignment={'center'}
+                                    snapToInterval={180}
+                                    renderItem={({ item }) => {
+                                        return (
+                                            <ItemCard />
+                                        );
+                                    }}
+                                    horizontal
+                                    showsHorizontalScrollIndicator={false}
+                                />
+                            </View>
+                        </View>
+                        {RenderPaymentMethod()}
+                        <View style={{ backgroundColor: COLORS.white, paddingVertical: 25, width: '100%', paddingHorizontal: 30, alignItems: 'center' }}>
+                            <Text style={{ fontSize: 20, fontWeight: '600' }}>Can't decide Your choice?</Text>
+                            <Text style={{ fontSize: 16, marginTop: 5 }}>Talk to our specialist</Text>
+                        </View>
+
+                        <View style={{ paddingHorizontal: 30, backgroundColor: COLORS.lightGray2, borderTopWidth: 1, borderTopColor: COLORS.lightGray, borderBottomColor: COLORS.lightGray, borderBottomWidth: 1 }}>
+                            <Pressable style={{ height: 60, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Text style={{ fontSize: 16, fontWeight: 'bold', color: COLORS.primary }}>Compare & Decide </Text>
+                                <Image source={icons.forward} style={{ height: 20, width: 20, tintColor: COLORS.primary }} />
+                            </Pressable>
+                        </View>
+
+                        <View style={{ paddingHorizontal: 30, backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.lightGray, borderBottomColor: COLORS.lightGray, borderBottomWidth: 1, paddingTop: 30 }}>
+                            <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 15 }}>Delivery Information</Text>
+                            <Pressable style={{ height: 60, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: COLORS.lightGray, }}>
+                                <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Get It in Kano</Text>
+                                <View style={{ flexDirection: 'row', }}>
+                                    <Text style={{ fontSize: 16, marginEnd: 10 }}>Other</Text>
+                                    <Image source={icons.forward} style={{ height: 20, width: 20 }} />
+                                </View>
+                            </Pressable>
+                            <Pressable style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: COLORS.lightGray, paddingVertical: 20 }}>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Image source={icons.pickUp} style={{ height: 30, width: 30, alignSelf: 'center', marginEnd: 8 }} />
+                                    <View>
+                                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 6 }}>Self Pick-Up in Kano</Text>
+                                        <Text>from 1 to 3 days</Text>
+                                    </View>
+                                </View>
+                                <Text style={{ fontSize: 16, marginEnd: 10 }}>Free</Text>
+                            </Pressable>
+                            <Pressable style={{ paddingVertical: 20, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, borderTopColor: COLORS.lightGray, marginBottom: isEnableAddToBag() ? 55 : 0 }}>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Image source={icons.delivery} style={{ height: 30, width: 30, alignSelf: 'center', marginEnd: 8 }} />
+                                    <View>
+                                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 6 }}>Delivery across Kano</Text>
+                                        <Text>from 1 to 3 days</Text>
+                                    </View>
+                                </View>
+                                <Text style={{ fontSize: 16, marginEnd: 10 }}>₦ 1500</Text>
+                            </Pressable>
+                        </View>
+                    </>
+                )}
+            />
+            {
+                isEnableAddToBag() && RenderFooter()
+            }
+        </>
     );
 };
 
