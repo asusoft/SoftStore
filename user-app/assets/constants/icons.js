@@ -6,12 +6,14 @@ const delivery = require('../icons/delivery.png');
 const eye = require('../icons/eye.png');
 const eye_close = require('../icons/eye_close.png');
 const filter = require('../icons/filter.png');
+const forward = require('../icons/forward.png');
 const heart = require("../icons/heart.png")
 const heartFilled = require("../icons/heart_filled.png")
 const info = require('../icons/info.png');
 const menu = require('../icons/menu.png');
 const minus = require('../icons/minus.png');
 const notification = require('../icons/notification.png');
+const pickUp = require('../icons/pick-up.png');
 const plus = require('../icons/plus.png');
 const qrcode = require('../icons/qrcode.png')
 const search = require('../icons/search.png');
@@ -29,12 +31,14 @@ export default {
     eye,
     eye_close,
     filter,
+    forward,
     heart,
     heartFilled,
     info,
     menu,
     minus,
     notification,
+    pickUp,
     plus,
     qrcode,
     search,

@@ -11,7 +11,7 @@ const SoftTrade = () => {
 
                 <Image source={{ uri: "/Users/softsavvy/Desktop/SoftStore/user-app/assets/icon.png" }} style={{ height: 25, width: 25 }} resizeMode='contain' />
 
-                <Text style={{ fontSize: 20, fontWeight: '600', marginBottom: 15 }}>Soft Trade</Text>
+                <Text style={{ fontSize: 20, fontWeight: '600', marginBottom: 15 }}>SoftTrade</Text>
 
             </View>
             <View style={{ width: '70%' }}>

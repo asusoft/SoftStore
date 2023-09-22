@@ -409,6 +409,7 @@ const Images = [
         'id': '1',
         'itemId': '1',
         'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15pro-digitalmat-gallery-1-202309_GEO_US?wid=728&hei=666&fmt=png-alpha&.v=1693346851451",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-3-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081545199",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081545196",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081544863",
@@ -418,6 +419,7 @@ const Images = [
         'id': '2',
         'itemId': '2',
         'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15pro-digitalmat-gallery-1-202309_GEO_US?wid=728&hei=666&fmt=png-alpha&.v=1693346851451",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15pro-digitalmat-gallery-3-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081542150",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081545196",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15promax-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693081544863",
@@ -472,6 +474,7 @@ const Images = [
         'id': '8',
         'itemId': '8',
         'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14-digitalmat-gallery-1-202303_GEO_US?wid=728&hei=666&fmt=png-alpha&.v=1679072735070",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-4-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169045",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-5-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169178",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone15-digitalmat-gallery-6-202309?wid=728&hei=666&fmt=png-alpha&.v=1693011169183"
@@ -499,6 +502,7 @@ const Images = [
         'id': '11',
         'itemId': '11',
         'uri': [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone13-digitalmat-gallery-1-202203_GEO_US?wid=728&hei=666&fmt=png-alpha&.v=1677662648569",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14-digitalmat-gallery-3-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055813794",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-4-202303?wid=728&hei=666&fmt=png-alpha&.v=1676510300912",
             "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone14plus-digitalmat-gallery-5-202209?wid=728&hei=666&fmt=png-alpha&.v=1662055808782"
@@ -510,19 +514,19 @@ const Sizes = [
     {
         "id": "1",
         "itemID": "1",
-        "value": "blue",
+        "value": "128GB",
         "price": 999.99
     },
     {
         "id": "2",
         "itemID": "1",
-        "value": "black",
+        "value": "256GB",
         "price": 1149.99
     },
     {
         "id": "3",
         "itemID": "1",
-        "value": "purple",
+        "value": "1TB",
         "price": 999.99
     },
     {
@@ -711,16 +715,19 @@ const Colours = [
     {
         "id": "1",
         "itemID": "1",
+        "name": 'Blue',
         "value": "blue",
     },
     {
         "id": "2",
         "itemID": "1",
+        "name": 'Space Black',
         "value": "black",
     },
     {
         "id": "3",
         "itemID": "1",
+        "name": 'Deep Purple',
         "value": "purple",
     },
     {
