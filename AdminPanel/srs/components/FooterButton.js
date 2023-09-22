@@ -15,9 +15,7 @@ const FooterButton = ({
     return (
         <TouchableOpacity
             onPress={onPress}
-            disabled={disabled}
-            opacity={0.5}
-            style={{ ...styles.Footer, opacity: disabled ? 0.5 : 1, ...footerStyle, }}
+            style={{ ...styles.Footer, ...footerStyle, }}
         >
             {leftComponent}
             <Text style={{ fontSize: 20, color: COLORS.light, fontWeight: "600" }}>
@@ -34,7 +32,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         padding: 10,
-        marginHorizontal: SIZES.padding,
         alignItems: "center",
         height: 60,
         borderRadius: 10,

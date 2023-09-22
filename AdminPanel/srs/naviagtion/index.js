@@ -16,11 +16,11 @@ const RootNavigator = () => {
         <RootStack.Navigator screenOptions={{ headerShown: false }}>
             {
                 authUser ?
-                    <RootStack.Screen name="Landing" component={HomeScreen} />
+                    <RootStack.Screen name="Home" component={HomeScreen} />
                     :
                     (
                         <>
-                            <RootStack.Screen name="Auth" component={SignInScreen} />
+                            <RootStack.Screen name="Sign In" component={SignInScreen} />
                         </>
                     )
 

@@ -1,11 +1,16 @@
 import React, { createContext, useContext, useState } from "react";
-import { db, auth } from '../../FirebaseConfig'
+import { db, auth } from '../../FirebaseConfig';
+import { getFirestore, collection, getDocs, query, where, onSnapshot } from "firebase/firestore";
+
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+import { getAuth } from "firebase/auth";
 
 const AuthContext = createContext({});
 
 const AuthContextProvider = ({ children }) => {
 
-    const user = auth().currentUser;
+    const user = getAuth().currentUser;
     const uid = user?.uid;
 
     const [authUser, setAuthUser] = useState(null);
@@ -18,81 +23,82 @@ const AuthContextProvider = ({ children }) => {
     }, [user])
 
     React.useEffect(() => {
-        user ?
-            db.collection("Workers").where("sub", "==", uid)
-                .onSnapshot((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        const dbUserData = doc.data()
-                        const dbUserObject = { ...dbUserData, id: doc.id };
-                        dbUserData !== '' ? setDbUser(dbUserObject) : []
-                    });
-                })
-            : []
+        if (user) {
+            const dbInstance = db;
+            const workersQuery = query(collection(dbInstance, "Workers"), where("sub", "==", uid));
+
+            const unsubscribe = onSnapshot(workersQuery, (querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const dbUserData = doc.data();
+                    const dbUserObject = { ...dbUserData, id: doc.id };
+                    if (dbUserData !== '') {
+                        setDbUser(dbUserObject);
+                    }
+                });
+            });
+
+            return () => unsubscribe();  // clean up the listener on component unmount
+        }
     }, [uid, authUser]);
 
 
     const createDbUser = async (sub, name, phoneNumber, email) => {
-        db.collection("Workers")
-            .add({
+        try {
+            const dbInstance = db;
+            const docRef = await addDoc(collection(dbInstance, "Workers"), {
                 name: name,
                 email: email,
                 phoneNumber: phoneNumber,
                 sub: sub,
-            })
-            .then((docRef) => {
-                setDbUser(docRef);
-            })
-            .catch(error => alert(error.message))
+            });
+            setDbUser(docRef);
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     const createWorker = async (email, password, name) => {
+        const authInstance = auth;
         try {
-            await auth()
-                .createUserWithEmailAndPassword(email, password)
-                .then(userCredentials => {
-                    const user = userCredentials.user;
-                    user.updateProfile({
-                        displayName: name,
-                    })
-
-                })
+            const userCredentials = await createUserWithEmailAndPassword(authInstance, email, password);
+            if (userCredentials.user) {
+                await updateProfile(userCredentials.user, { displayName: name });
+            }
         } catch (error) {
             throw new Error(error.message);
         }
-    }
+    };
 
     const signIn = async (email, password) => {
+
         try {
-            await auth()
-                .signInWithEmailAndPassword(email, password)
-                .then(userCredentials => {
-                    const user = userCredentials.user;
-                    setAuthUser(user);
-                })
+            const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredentials.user;
+            setAuthUser(user);
         } catch (error) {
             throw new Error(error.message);
         }
     };
 
 
-    const signOut = () => {
-        auth()
-            .signOut()
-            .then(function () {
-                setAuthUser(null)
-                setDbUser(null)
-            })
-            .catch(error => alert(error.message));
+    const signUserOut = async () => {
+        try {
+            await signOut(auth);
+            setAuthUser(null);
+            setDbUser(null);
+        } catch (error) {
+            alert(error.message);
+        }
     };
-
 
     return (
         <AuthContext.Provider value={{
+            user,
             authUser,
             dbUser,
             sub,
             signIn,
-            signOut,
+            signUserOut,
             setDbUser,
             setAuthUser,
         }}>
