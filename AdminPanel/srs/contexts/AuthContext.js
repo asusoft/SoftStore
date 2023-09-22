@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { db, auth } from '../FirebaseConfig'
+import { db, auth } from '../../FirebaseConfig'
 
 const AuthContext = createContext({});
 
@@ -91,7 +91,6 @@ const AuthContextProvider = ({ children }) => {
             authUser,
             dbUser,
             sub,
-            signUp,
             signIn,
             signOut,
             setDbUser,
