@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { View, Image, Text, StyleSheet, FlatList } from 'react-native';
 import { COLORS } from '../../../assets/constants/theme';
 import icons from '../../../assets/constants/icons';
-import BrandCard from '../../components/BrandCard';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import Card from '../../components/Card';
 
 
 const Categories = () => {
@@ -51,14 +51,13 @@ const Categories = () => {
                                         showsVerticalScrollIndicator={false}
                                         renderItem={({ item }) => {
                                             return (
-                                                <BrandCard brand={item} />
+                                                <Card parent="categories" item={item} />
                                             );
                                         }}
                                     />
                                 </View>
                             </View>
                         </View>
-
                     </>
                 )}
             />

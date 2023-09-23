@@ -3,32 +3,34 @@ import React from 'react';
 import { COLORS, SIZES } from '../../assets/constants/theme';
 import { useNavigation } from '@react-navigation/native';
 
-const BrandCard = ({ brand }) => {
+import { Link } from 'react-router-dom';
+
+const Card = ({ item, parent }) => {
     return (
-        <View style={{ width: '50%', margin: 5 }}>
+        <Link to={`/${parent}/${item.name}`} style={{ width: '50%', margin: 5 }}>
             <Pressable style={({ hovered }) => [
-                styles.brand,
-                hovered ? styles.brandHovered : null
+                styles.item,
+                hovered ? styles.itemHovered : null
             ]}>
                 <View style={{ padding: 5, borderRadius: 5, marginTop: 10 }}>
-                    <Text style={{ fontSize: 24 }}>{brand.name}</Text>
+                    <Text style={{ fontSize: 24 }}>{item.name}</Text>
                 </View>
-                <Image source={{ uri: brand.icon }}
+                <Image source={{ uri: item.icon }}
                     style={{
                         width: '40%', // or a fixed size that fits your design
                         height: '80%', // adjust based on your needs
                         resizeMode: 'contain',
                     }} />
             </Pressable>
-        </View>
+        </Link>
     );
 };
 
-export default BrandCard;
+export default Card;
 
 
 const styles = StyleSheet.create({
-    brand: {
+    item: {
         paddingHorizontal: 12,
         height: 150,
         flexDirection: 'row',
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: COLORS.lightGray2,
     },
-    brandHovered: {
+    itemHovered: {
         backgroundColor: COLORS.lightGray, // or any other styling changes for hover
     },
 });

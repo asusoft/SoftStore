@@ -3,9 +3,11 @@ import { View, Image, Text, Pressable, StyleSheet, FlatList } from 'react-native
 import images from '../../../assets/constants/images';
 import { COLORS } from '../../../assets/constants/theme';
 import icons from '../../../assets/constants/icons';
-import BrandCard from '../../components/BrandCard';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import Card from '../../components/Card';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,6 +15,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 const Brands = () => {
     const db = getFirestore();
     const [brands, setBrands] = useState([]);
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         const fetchBrands = async () => {
@@ -28,6 +31,9 @@ const Brands = () => {
         fetchBrands();
     }, []);
 
+    const goToDetails = ({ name }) => {
+        navigate(`/brands/${name}`);
+    }
 
     return (
         <div>
@@ -57,7 +63,10 @@ const Brands = () => {
                                         showsVerticalScrollIndicator={false}
                                         renderItem={({ item }) => {
                                             return (
-                                                <BrandCard brand={item} />
+                                                <Card
+                                                    item={item}
+                                                    parent="brands"
+                                                />
                                             );
                                         }}
                                     />

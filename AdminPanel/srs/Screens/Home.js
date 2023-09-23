@@ -7,6 +7,7 @@ import Brands from './pages/Brands.js';
 import CreateBrand from './pages/CreateBrand.js';
 import Categories from './pages/Categories';
 import AddCategory from './pages/AddCategory';
+import BrandDetails from './pages/BrandDetails';
 
 const HomeScreen = () => {
     return (
@@ -16,6 +17,7 @@ const HomeScreen = () => {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/brands/createbrand" element={<CreateBrand />} />
+                    <Route path="/brands/:brandName" element={<BrandDetails />} />
                     <Route path="/brands" element={<Brands />} />
                     <Route path="/categories/add category" element={<AddCategory />} />
                     <Route path="/categories" element={<Categories />} />
