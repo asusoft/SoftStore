@@ -51,8 +51,12 @@ const Sidebar = ({ children }) => {
                 }
             </div>
             <main>
-                <Header />
-                {children}
+                <div className="header">
+                    <Header />
+                </div>
+                <div className="scrollable-content">
+                    {children}
+                </div>
             </main>
         </div>
     );

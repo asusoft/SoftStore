@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sidebar from '../components/sidebar';
 import Dashboard from './pages/Dashboard.js';
 import Brands from './pages/Brands.js';
+import CreateBrand from './pages/CreateBrand.js';
 
 const HomeScreen = () => {
     return (
@@ -12,6 +13,7 @@ const HomeScreen = () => {
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/brands/createbrand" element={<CreateBrand />} />
                     <Route path="/brands" element={<Brands />} />
                 </Routes>
             </Sidebar>

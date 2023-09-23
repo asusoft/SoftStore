@@ -1,26 +1,75 @@
-import React from 'react';
-import { View, Image, Text, Pressable, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Image, Text, Pressable, StyleSheet, FlatList } from 'react-native';
 import images from '../../../assets/constants/images';
 import { COLORS } from '../../../assets/constants/theme';
 import icons from '../../../assets/constants/icons';
-import { CollectionReference } from 'firebase/firestore';
+import BrandCard from '../../components/BrandCard';
+import { NavLink, Outlet } from 'react-router-dom';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+
+
+
 
 const Brands = () => {
+    const db = getFirestore();
+    const [brands, setBrands] = useState([]);
+
+    React.useEffect(() => {
+        const fetchBrands = async () => {
+            const brandsCollection = collection(db, 'Brands');
+            const brandSnapshot = await getDocs(brandsCollection);
+            const fetchedBrands = brandSnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            setBrands(fetchedBrands);
+        };
+
+        fetchBrands();
+    }, []);
+
+
     return (
-        <View style={styles.container}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ fontSize: 18, fontWeight: '600' }}>Brands</Text>
-                <Pressable style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6 }}>
-                    <Image source={icons.plus} style={{ height: 20, width: 20, tintColor: COLORS.white }} />
-                    <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Create New</Text>
-                </Pressable>
-            </View>
-            <View style={{ flex: 1, width: '100%', backgroundColor: COLORS.white, borderRadius: 8, marginTop: 25, padding: 20 }}>
-                <Text>Card</Text>
+        <div>
 
-            </View>
 
-        </View>
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                ListHeaderComponent={() => (
+                    <>
+                        <View style={styles.container}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Text style={{ fontSize: 24, fontWeight: '600' }}>Brands</Text>
+
+                                <NavLink to='createbrand'>
+                                    <View style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6 }}>
+                                        <Image source={icons.plus} style={{ height: 20, width: 20, tintColor: COLORS.white }} />
+                                        <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Create New</Text>
+                                    </View>
+                                </NavLink>
+
+                            </View>
+                            <View style={{ flex: 1, width: '100%', backgroundColor: COLORS.white, borderRadius: 8, marginTop: 25, paddingTop: 0, paddingRight: 20 }}>
+                                <View style={{ marginVertical: 20, marginHorizontal: 10 }}>
+                                    <FlatList
+                                        data={brands}
+                                        numColumns={2}
+                                        showsVerticalScrollIndicator={false}
+                                        renderItem={({ item }) => {
+                                            return (
+                                                <BrandCard brand={item} />
+                                            );
+                                        }}
+                                    />
+                                </View>
+                            </View>
+                        </View>
+
+                    </>
+                )}
+            />
+            <Outlet /> {/* This will act as a placeholder for nested routes */}
+        </div>
     );
 };
 

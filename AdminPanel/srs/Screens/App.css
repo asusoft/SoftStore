@@ -9,10 +9,28 @@
 }
 
 main {
-    width: 100%;
+    margin-left: 300px;
+    /* Adjust this value based on your sidebar's width */
+    width: calc(100% - 300px);
+    /* Adjust this value based on your sidebar's width */
+    height: 100vh;
+    /* This makes main take the full viewport height */
+    overflow-y: auto;
+    /* This allows the main content to scroll if it overflows */
+    position: relative;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* This ensures it remains on top */
 }
 
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     background: #fff;
     color: #fff;
     height: 100vh;
@@ -58,7 +76,81 @@ main {
     color: #fff;
 }
 
+.scrollable-content {
+    height: calc(100vh - [HEIGHT OF YOUR HEADER]);
+    /* Replace [HEIGHT OF YOUR HEADER] with your header's height */
+    overflow-y: auto;
+}
+
 .icon,
 .link_text {
     font-size: 15px;
+}
+
+.brand-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.brand-label {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.brand-input,
+.brand-file-input {
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.brand-file-input {
+    padding: 8px 0;
+}
+
+.brand-button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.brand-button:hover {
+    background-color: #0056b3;
+}
+
+.cancel-button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: none;
+    background-color: #dc3545;
+    /* Red color for cancel */
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    /* Add some space between the Add and Cancel buttons */
+}
+
+.cancel-button:hover {
+    background-color: #c82333;
 }

@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#2c3e50',
+        position: 'absolute',
+        top: 0
     },
 });
 

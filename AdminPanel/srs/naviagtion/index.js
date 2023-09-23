@@ -4,6 +4,7 @@ import { useAuthContext } from "../contexts/AuthContext";
 
 import HomeScreen from "../Screens/Home";
 import SignInScreen from "../Screens/SignIn";
+import CreateBrand from "../Screens/pages/CreateBrand";
 
 
 
@@ -15,11 +16,11 @@ const RootNavigator = () => {
         <RootStack.Navigator screenOptions={{ headerShown: false }}>
             {
                 authUser ?
-                    <RootStack.Screen name="Home" component={HomeScreen} />
+                    <RootStack.Screen name="Home" component={HomeStackNavigator} />
                     :
                     (
                         <>
-                            <RootStack.Screen name="Sign In" component={HomeScreen} />
+                            <RootStack.Screen name="Sign In" component={HomeStackNavigator} />
                         </>
                     )
 
@@ -27,5 +28,25 @@ const RootNavigator = () => {
         </RootStack.Navigator>
     )
 }
+
+const HomeStack = createNativeStackNavigator();
+
+const HomeStackNavigator = () => {
+    return (
+        <HomeStack.Navigator
+            screenOptions={{ headerShown: false }}
+            initialRouteName="HomeScreen"
+        >
+            <HomeStack.Screen
+                name="HomeScreen"
+                component={HomeScreen}
+            />
+            <HomeStack.Screen
+                name="CreateBrand"
+                component={CreateBrand}
+            />
+        </HomeStack.Navigator>
+    );
+};
 
 export default RootNavigator

@@ -89,7 +89,7 @@ const Brands = [
     {
         id: 7,
         name: "Others",
-        icon: "/Users/softsavvy/Desktop/SoftStore/user-app/assets/images/Logo_2.png"
+        icon: "/Users/softsavvy/Desktop/SoftStore/AdminPanel/assets/images/Logo_2.png"
     },
 ]
 
