@@ -63,13 +63,7 @@ const SignInScreen = () => {
     return (
         <View style={styles.container}>
             {RenderForm()}
-
             {RenderFooter()}
-
-            <Text>{authUser?.email}</Text>
-            <Pressable onPress={() => signUserOut()}>
-                <Text>Sign Out</Text>
-            </Pressable>
         </View>
     );
 };
@@ -79,6 +73,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
         paddingHorizontal: 25,
         backgroundColor: COLORS.background,
     },

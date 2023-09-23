@@ -9,7 +9,6 @@ import SignInScreen from "../Screens/SignIn";
 
 const RootStack = createNativeStackNavigator();
 
-
 const RootNavigator = () => {
     const { dbUser, authUser } = useAuthContext();
     return (
@@ -20,7 +19,7 @@ const RootNavigator = () => {
                     :
                     (
                         <>
-                            <RootStack.Screen name="Sign In" component={SignInScreen} />
+                            <RootStack.Screen name="Sign In" component={HomeScreen} />
                         </>
                     )
 

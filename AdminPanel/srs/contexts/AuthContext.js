@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import { db, auth } from '../../FirebaseConfig';
 import { getFirestore, collection, getDocs, query, where, onSnapshot } from "firebase/firestore";
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, setPersistence, signInWithEmailAndPassword, browserSessionPersistence, signOut } from "firebase/auth";
 
 import { getAuth } from "firebase/auth";
 
@@ -72,9 +72,24 @@ const AuthContextProvider = ({ children }) => {
     const signIn = async (email, password) => {
 
         try {
-            const userCredentials = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredentials.user;
-            setAuthUser(user);
+
+            setPersistence(auth, browserSessionPersistence)
+                .then(async () => {
+                    // Existing and future Auth states are now persisted in the current
+                    // session only. Closing the window would clear any existing state even
+                    // if a user forgets to sign out.
+                    // ...
+                    // New sign-in will be persisted with session persistence.
+                    const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+                    const user = userCredentials.user;
+                    setAuthUser(user);
+                    return userCredentials;
+                })
+                .catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                });
         } catch (error) {
             throw new Error(error.message);
         }
