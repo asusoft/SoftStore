@@ -29,6 +29,12 @@ const Sidebar = ({ children }) => {
             path: "/brands",
             name: "Brands",
             icon: <FaShoppingBag />
+        },
+        ,
+        {
+            path: "/categories",
+            name: "Categories",
+            icon: <FaShoppingBag />
         }
     ]
     return (
