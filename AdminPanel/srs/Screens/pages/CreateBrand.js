@@ -66,12 +66,14 @@ const CreateBrand = () => {
                     onChange={onImageChange}
                 />
             </label>
-            <button className="brand-button" onClick={addBrand}>
-                Add Brand
-            </button>
-            <button className="brand-button cancel-button" onClick={cancelAddition}>
-                Cancel
-            </button>
+            <div className="button-container">
+                <button className="brand-button" onClick={addBrand}>
+                    Add Brand
+                </button>
+                <button className="brand-button cancel-button" onClick={cancelAddition}>
+                    Cancel
+                </button>
+            </div>
         </div>
     );
 }
