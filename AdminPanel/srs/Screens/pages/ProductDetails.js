@@ -6,15 +6,13 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { COLORS } from '../../../assets/constants/theme';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Card from '../../components/Card';
+import ItemCard from '../../components/ItemCard';
 
 const ProductDetails = () => {
     const db = getFirestore();
     const { brandName, productID, productName } = useParams();
-    const [brand, setBrandDetails] = React.useState(null);
     const [product, setProduct] = React.useState(null);
-
-    const [products, setProducts] = React.useState([]);
+    const [items, setItems] = React.useState(null);
 
     const navigate = useNavigate();
 
@@ -22,54 +20,25 @@ const ProductDetails = () => {
         navigate(`brands/${brandName}`);
     }
 
-    async function fetchProductsByBrand(brandID) {
-        const db = getFirestore();
-        const productsCollection = collection(db, 'Products');
-        const q = query(productsCollection, where('brandID', '==', brandID));
+    async function fetchItemsByID(product_ID) {
+        const itemsCollection = collection(db, 'Items');
+        const q = query(itemsCollection, where('productID', '==', product_ID));
 
         try {
             const querySnapshot = await getDocs(q);
-            const products = querySnapshot.docs.map(doc => {
+            const items = querySnapshot.docs.map(doc => {
                 return {
-                    id: doc.id,        // Add the document ID
-                    ...doc.data()      // Spread the rest of the document data
+                    id: doc.id,
+                    ...doc.data()
                 };
             });
-            return products;
+            return items;
         } catch (error) {
-            console.error('Error fetching products:', error);
+            console.error('Error fetching items:', error);
             return [];
         }
     }
 
-    React.useEffect(() => {
-        const fetchBrandDetails = async () => {
-            try {
-                const brandsCollection = collection(db, 'Brands');
-                const q = query(brandsCollection, where('name', '==', brandName));
-                const querySnapshot = await getDocs(q);
-
-                if (!querySnapshot.empty) {
-                    const doc = querySnapshot.docs[0];
-                    const brandData = {
-                        id: doc.id,
-                        ...doc.data()
-                    };
-                    setBrandDetails(brandData);
-
-                    const products = await fetchProductsByBrand(brandData.id);
-                    setProducts(products);
-
-                } else {
-                    console.error('No brand found with the given name');
-                }
-            } catch (error) {
-                console.error('Error fetching brand details:', error);
-            }
-        };
-
-        fetchBrandDetails();
-    }, [brandName, db]);
 
     React.useEffect(() => {
         const fetchProductDetails = async () => {
@@ -79,6 +48,9 @@ const ProductDetails = () => {
 
                 if (docSnap.exists()) {
                     setProduct(docSnap.data());
+
+                    const items = await fetchItemsByID(productID);
+                    setItems(items);
                 } else {
                     console.error("No such document!");
                 }
@@ -91,7 +63,6 @@ const ProductDetails = () => {
         fetchProductDetails();
     }, [productName, db]);
 
-
     return (
         <View style={styles.container}>
             <View style={{ width: '100%', height: 220, backgroundColor: COLORS.white, borderRadius: 8 }}>
@@ -102,11 +73,36 @@ const ProductDetails = () => {
                 <View style={{ marginLeft: 220, marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', marginEnd: 20 }}>
                     <View>
                         <Text style={{ fontSize: 24, fontWeight: '600' }}>{product?.name}</Text>
-                        <Text style={{ fontSize: 18, marginTop: 8 }}>{products.length} items</Text>
+                        <Text style={{ fontSize: 18, marginTop: 8 }}>{items?.length} items</Text>
                     </View>
-                    <Pressable style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6, height: 40, alignItems: 'center', justifyContent: 'center' }}>
+                    <Pressable style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.red, borderRadius: 6, height: 40, alignItems: 'center', justifyContent: 'center' }}>
                         <Text style={{ fontSize: 16, color: COLORS.white }}>Make Unavailable</Text>
                     </Pressable>
+                </View>
+            </View>
+            <View style={{ flex: 1, width: '100%', backgroundColor: COLORS.white, borderRadius: 8, marginTop: 25, paddingTop: 0, paddingRight: 20 }}>
+                <View style={{ marginVertical: 20, marginHorizontal: 10, paddingHorizontal: 20 }}>
+                    <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <Text style={{ fontSize: 24, fontWeight: '600', }}>Items</Text>
+                        <NavLink to={`/brands/${product?.name}/add-product/${product?.id}`}>
+                            <View style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6 }}>
+                                <Image source={icons.plus} style={{ height: 20, width: 20, tintColor: COLORS.white }} />
+                                <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Add Item</Text>
+                            </View>
+                        </NavLink>
+                    </View>
+                    <FlatList
+                        data={items}
+                        numColumns={4}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={({ item }) => {
+                            return (
+                                <ItemCard
+                                    item={item}
+                                />
+                            );
+                        }}
+                    />
                 </View>
             </View>
         </View>
