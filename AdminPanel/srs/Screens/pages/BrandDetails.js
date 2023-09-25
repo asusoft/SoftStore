@@ -51,11 +51,17 @@ const BrandDetails = () => {
                 const querySnapshot = await getDocs(q);
 
                 if (!querySnapshot.empty) {
-                    const brandData = querySnapshot.docs[0].data();
+                    const doc = querySnapshot.docs[0];
+                    const brandData = {
+                        id: doc.id,           // Adding the document ID here
+                        ...doc.data()         // Spread the rest of the document data
+                    };
                     setBrandDetails(brandData);
 
-                    const brandID = querySnapshot.docs[0].id;
-                    const products = await fetchProductsByBrand(brandID);
+                    const products = await fetchProductsByBrand(brandData.id);
+                    setProducts(products);
+
+
                     setProducts(products)
                 } else {
                     console.error('No brand found with the given name');
