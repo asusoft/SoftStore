@@ -6,8 +6,11 @@ import {
     FaRegChartBar,
     FaCommentAlt,
     FaShoppingBag,
+    FaBeer,
     FaThList
 } from "react-icons/fa";
+
+import { TbCategory2 } from "react-icons/tb"
 import { Image, Pressable, View } from 'react-native';
 import { NavLink } from 'react-router-dom';
 import Header from './Header';
@@ -28,13 +31,13 @@ const Sidebar = ({ children }) => {
         {
             path: "/brands",
             name: "Brands",
-            icon: <FaShoppingBag />
+            icon: <FaThList />
         },
         ,
         {
             path: "/categories",
             name: "Categories",
-            icon: <FaShoppingBag />
+            icon: <TbCategory2 />
         }
     ]
     return (

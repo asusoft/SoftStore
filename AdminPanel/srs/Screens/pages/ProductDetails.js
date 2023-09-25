@@ -8,9 +8,9 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Card from '../../components/Card';
 
-const BrandDetails = () => {
+const ProductDetails = () => {
     const db = getFirestore();
-    const { brandName } = useParams();
+    const { brandName, productID, productName } = useParams();
     const [brand, setBrandDetails] = React.useState(null);
 
     const [products, setProducts] = React.useState([]);
@@ -77,37 +77,14 @@ const BrandDetails = () => {
                 <View style={{ padding: 10, position: 'absolute', top: 25, left: 25, height: 170, borderWidth: 1, borderColor: COLORS.black, backgroundColor: COLORS.white, width: 170, borderRadius: 8 }}>
                     <Image source={{ uri: brand?.icon }} resizeMode='contain' style={{ height: "100%", width: "100%" }} />
                 </View>
-
                 <View style={{ marginLeft: 220, marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', marginEnd: 20 }}>
                     <View>
-                        <Text style={{ fontSize: 24, fontWeight: '600' }}>{brand?.name}</Text>
-                        <Text style={{ fontSize: 18, marginTop: 8 }}>{products.length} Products</Text>
+                        <Text style={{ fontSize: 24, fontWeight: '600' }}>{productName}</Text>
+                        <Text style={{ fontSize: 18, marginTop: 8 }}>{products.length} items</Text>
                     </View>
-                    <NavLink to={`/brands/${brand?.name}/add-product/${brand?.id}`}>
-                        <View style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6 }}>
-                            <Image source={icons.plus} style={{ height: 20, width: 20, tintColor: COLORS.white }} />
-                            <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Add Product</Text>
-                        </View>
-                    </NavLink>
-                </View>
-            </View>
-
-            <View style={{ flex: 1, width: '100%', backgroundColor: COLORS.white, borderRadius: 8, marginTop: 25, paddingTop: 0, paddingRight: 20 }}>
-                <View style={{ marginVertical: 20, marginHorizontal: 10 }}>
-                    <Text style={{ fontSize: 24, fontWeight: '600', marginHorizontal: 10, marginVertical: 20 }}>Products</Text>
-                    <FlatList
-                        data={products}
-                        numColumns={2}
-                        showsVerticalScrollIndicator={false}
-                        renderItem={({ item }) => {
-                            return (
-                                <Card
-                                    item={item}
-                                    parent={`brands/${brand?.name}/products`}
-                                />
-                            );
-                        }}
-                    />
+                    <View style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6, height: 40 }}>
+                        <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Make Unavailable</Text>
+                    </View>
                 </View>
             </View>
         </View>
@@ -123,4 +100,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default BrandDetails;
+export default ProductDetails;

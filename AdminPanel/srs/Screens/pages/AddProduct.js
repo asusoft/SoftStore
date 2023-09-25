@@ -66,6 +66,7 @@ const AddProduct = () => {
                 icon: imageUrl,
                 brandID: brandID,
                 categoryID: selectedCategory,
+                isAvailable: true
             });
 
             alert("Product added successfully!");

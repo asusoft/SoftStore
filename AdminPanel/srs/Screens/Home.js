@@ -9,6 +9,7 @@ import Categories from './pages/Categories';
 import AddCategory from './pages/AddCategory';
 import BrandDetails from './pages/BrandDetails';
 import AddProduct from './pages/AddProduct';
+import ProductDetails from './pages/ProductDetails';
 
 const HomeScreen = () => {
     return (
@@ -19,6 +20,8 @@ const HomeScreen = () => {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/brands/createbrand" element={<CreateBrand />} />
                     <Route path="/brands/:brandName/add-product/:brandID" element={<AddProduct />} />
+                    <Route path="/brands/:brandName/products/:productName/add-item/:productID" element={<BrandDetails />} />
+                    <Route path="/brands/:brandName/products/:productName" element={<ProductDetails />} />
                     <Route path="/brands/:brandName" element={<BrandDetails />} />
                     <Route path="/brands" element={<Brands />} />
                     <Route path="/categories/add category" element={<AddCategory />} />
