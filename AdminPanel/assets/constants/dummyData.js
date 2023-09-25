@@ -370,37 +370,37 @@ const Products = [
         "id": "1",
         "brandId": '1',
         "name": "iPhone",
-        "image": "https://assets-global.website-files.com/5ca6f1703977261264f0212e/65044ea4e7e2a2495825fdbc_Promotional-Banner-Desktop-iphone15%20(1).webp",
+        "icon": "https://assets-global.website-files.com/5ca6f1703977261264f0212e/65044ea4e7e2a2495825fdbc_Promotional-Banner-Desktop-iphone15%20(1).webp",
     },
     {
         "id": "2",
         "brandId": '1',
         "name": "Mac",
-        "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-14-16-mac-nav-202301?wid=400&hei=260&fmt=png-alpha&.v=1670959891635",
+        "icon": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-14-16-mac-nav-202301?wid=400&hei=260&fmt=png-alpha&.v=1670959891635",
     },
     {
         "id": "3",
         "brandId": '1',
         "name": "iPad",
-        "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-card-40-pro-202210?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1664578794100",
+        "icon": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-card-40-pro-202210?wid=680&hei=528&fmt=p-jpg&qlt=95&.v=1664578794100",
     },
     {
         "id": "4",
         "brandId": '1',
         "name": "Apple Watch",
-        "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202309?wid=400&hei=260&fmt=png-alpha&.v=1693703822208",
+        "icon": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-watch-nav-202309?wid=400&hei=260&fmt=png-alpha&.v=1693703822208",
     },
     {
         "id": "5",
         "brandId": '1',
         "name": "AirPods",
-        "image": "https://help.apple.com/assets/6305096F029A2032C16D3326/63050972029A2032C16D332F/nl_NL/b9f519195f84950573eea5088a49b964.png",
+        "icon": "https://help.apple.com/assets/6305096F029A2032C16D3326/63050972029A2032C16D332F/nl_NL/b9f519195f84950573eea5088a49b964.png",
     },
     {
         "id": "6",
         "brandId": '1',
         "name": "Accessories",
-        "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-accessories-nav-202309?wid=400&hei=260&fmt=png-alpha&.v=1692803114952",
+        "icon": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/store-card-13-accessories-nav-202309?wid=400&hei=260&fmt=png-alpha&.v=1692803114952",
     },
 ]
 

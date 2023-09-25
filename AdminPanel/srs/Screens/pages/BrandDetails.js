@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, Pressable, StyleSheet, Button } from 'react-native';
+import { View, Image, Text, Pressable, StyleSheet, Button, FlatList } from 'react-native';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import images from '../../../assets/constants/images';
 import icons from '../../../assets/constants/icons';
@@ -7,11 +7,15 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { COLORS } from '../../../assets/constants/theme';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import dummyData from '../../../assets/constants/dummyData'
+import Card from '../../components/Card';
 
 const BrandDetails = () => {
     const db = getFirestore();
     const { brandName } = useParams();
     const [brand, setBrandDetails] = React.useState(null);
+
+    const products = dummyData.Products
 
     const navigate = useNavigate();
 
@@ -59,6 +63,25 @@ const BrandDetails = () => {
                             <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Add Product</Text>
                         </View>
                     </NavLink>
+                </View>
+            </View>
+
+            <View style={{ flex: 1, width: '100%', backgroundColor: COLORS.white, borderRadius: 8, marginTop: 25, paddingTop: 0, paddingRight: 20 }}>
+                <View style={{ marginVertical: 20, marginHorizontal: 10 }}>
+                    <Text style={{ fontSize: 24, fontWeight: '600', marginHorizontal: 10, marginVertical: 20 }}>Products</Text>
+                    <FlatList
+                        data={products}
+                        numColumns={2}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={({ item }) => {
+                            return (
+                                <Card
+                                    item={item}
+                                    parent="brands"
+                                />
+                            );
+                        }}
+                    />
                 </View>
             </View>
         </View>
