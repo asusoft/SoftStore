@@ -167,3 +167,13 @@ main {
     margin-right: 10px;
     /* this provides some space between the "Add Brand" button and the "Cancel" button */
 }
+
+.category-select-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-select-container label {
+    margin-bottom: 8px;
+    /* Adjust as needed for spacing */
+}

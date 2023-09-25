@@ -1,13 +1,11 @@
 import React from 'react';
 import { View, Image, Text, Pressable, StyleSheet, Button, FlatList } from 'react-native';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
-import images from '../../../assets/constants/images';
 import icons from '../../../assets/constants/icons';
 import { NavLink, Outlet } from 'react-router-dom';
 import { COLORS } from '../../../assets/constants/theme';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import dummyData from '../../../assets/constants/dummyData'
 import Card from '../../components/Card';
 
 const BrandDetails = () => {
@@ -53,16 +51,14 @@ const BrandDetails = () => {
                 if (!querySnapshot.empty) {
                     const doc = querySnapshot.docs[0];
                     const brandData = {
-                        id: doc.id,           // Adding the document ID here
-                        ...doc.data()         // Spread the rest of the document data
+                        id: doc.id,
+                        ...doc.data()
                     };
                     setBrandDetails(brandData);
 
                     const products = await fetchProductsByBrand(brandData.id);
                     setProducts(products);
 
-
-                    setProducts(products)
                 } else {
                     console.error('No brand found with the given name');
                 }
@@ -87,7 +83,7 @@ const BrandDetails = () => {
                         <Text style={{ fontSize: 24, fontWeight: '600' }}>{brand?.name}</Text>
                         <Text style={{ fontSize: 18, marginTop: 8 }}>{products.length} Products</Text>
                     </View>
-                    <NavLink to='createbrand'>
+                    <NavLink to={`/brands/${brand?.name}/add-product/${brand?.id}`}>
                         <View style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6 }}>
                             <Image source={icons.plus} style={{ height: 20, width: 20, tintColor: COLORS.white }} />
                             <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Add Product</Text>
@@ -107,7 +103,7 @@ const BrandDetails = () => {
                             return (
                                 <Card
                                     item={item}
-                                    parent="brands"
+                                    parent={`brands/${brand?.name}/products`}
                                 />
                             );
                         }}
