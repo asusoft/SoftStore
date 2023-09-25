@@ -103,7 +103,7 @@ const BrandDetails = () => {
                             return (
                                 <Card
                                     item={item}
-                                    parent={`brands/${brand?.name}/products`}
+                                    parent={`brands/${brand?.name}/products/${item?.id}`}
                                 />
                             );
                         }}

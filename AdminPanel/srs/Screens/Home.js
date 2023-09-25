@@ -21,7 +21,7 @@ const HomeScreen = () => {
                     <Route path="/brands/createbrand" element={<CreateBrand />} />
                     <Route path="/brands/:brandName/add-product/:brandID" element={<AddProduct />} />
                     <Route path="/brands/:brandName/products/:productName/add-item/:productID" element={<BrandDetails />} />
-                    <Route path="/brands/:brandName/products/:productName" element={<ProductDetails />} />
+                    <Route path="/brands/:brandName/products/:productID/:productName" element={<ProductDetails />} />
                     <Route path="/brands/:brandName" element={<BrandDetails />} />
                     <Route path="/brands" element={<Brands />} />
                     <Route path="/categories/add category" element={<AddCategory />} />
