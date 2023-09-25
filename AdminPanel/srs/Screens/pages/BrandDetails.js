@@ -15,12 +15,32 @@ const BrandDetails = () => {
     const { brandName } = useParams();
     const [brand, setBrandDetails] = React.useState(null);
 
-    const products = dummyData.Products
+    const [products, setProducts] = React.useState([]);
 
     const navigate = useNavigate();
 
     const goBack = () => {
         navigate("/brands");
+    }
+
+    async function fetchProductsByBrand(brandID) {
+        const db = getFirestore();
+        const productsCollection = collection(db, 'Products');
+        const q = query(productsCollection, where('brandID', '==', brandID));
+
+        try {
+            const querySnapshot = await getDocs(q);
+            const products = querySnapshot.docs.map(doc => {
+                return {
+                    id: doc.id,        // Add the document ID
+                    ...doc.data()      // Spread the rest of the document data
+                };
+            });
+            return products;
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            return [];
+        }
     }
 
     React.useEffect(() => {
@@ -33,6 +53,10 @@ const BrandDetails = () => {
                 if (!querySnapshot.empty) {
                     const brandData = querySnapshot.docs[0].data();
                     setBrandDetails(brandData);
+
+                    const brandID = querySnapshot.docs[0].id;
+                    const products = await fetchProductsByBrand(brandID);
+                    setProducts(products)
                 } else {
                     console.error('No brand found with the given name');
                 }
@@ -55,7 +79,7 @@ const BrandDetails = () => {
                 <View style={{ marginLeft: 220, marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', marginEnd: 20 }}>
                     <View>
                         <Text style={{ fontSize: 24, fontWeight: '600' }}>{brand?.name}</Text>
-                        <Text style={{ fontSize: 18, marginTop: 8 }}>6 Products</Text>
+                        <Text style={{ fontSize: 18, marginTop: 8 }}>{products.length} Products</Text>
                     </View>
                     <NavLink to='createbrand'>
                         <View style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6 }}>
