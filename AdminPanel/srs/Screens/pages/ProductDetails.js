@@ -84,7 +84,7 @@ const ProductDetails = () => {
                 <View style={{ marginVertical: 20, marginHorizontal: 10, paddingHorizontal: 20 }}>
                     <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={{ fontSize: 24, fontWeight: '600', }}>Items</Text>
-                        <NavLink to={`/brands/${product?.name}/add-product/${product?.id}`}>
+                        <NavLink to={`/brands/${brandName}/products/${product?.name}/add-item/${productID}`}>
                             <View style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.darkPrimary, borderRadius: 6 }}>
                                 <Image source={icons.plus} style={{ height: 20, width: 20, tintColor: COLORS.white }} />
                                 <Text style={{ fontSize: 16, color: COLORS.white, marginLeft: 4 }}>Add Item</Text>

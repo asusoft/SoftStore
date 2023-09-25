@@ -177,3 +177,146 @@ main {
     margin-bottom: 8px;
     /* Adjust as needed for spacing */
 }
+
+.image-card-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.image-card {
+    position: relative;
+    width: 60px;
+    /* Adjust as per your requirements */
+    height: 60px;
+    overflow: hidden;
+}
+
+.image-card img {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+.remove-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 0, 0, 0.6);
+    /* Red with some transparency */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.image-upload-card {
+    height: 60px;
+    width: 60px;
+    background-color: #FFFFFF;
+    /* This is for COLORS.white */
+    margin-right: 10px;
+    /* 'marginEnd' in React Native translates to 'margin-right' in CSS for LTR layouts */
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.size-selector {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+}
+
+input[type="checkbox"]:checked+.custom-checkbox::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #007BFF;
+    border-radius: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sizes-container {
+    font-family: Arial, sans-serif;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 40%;
+    box-sizing: border-box;
+}
+
+.add-button,
+.save-button .remove-button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover,
+.save-button:hover {
+    background-color: #0056b3;
+}
+
+.size-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.size-item {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.size-item:last-child {
+    border-bottom: none;
+}
+
+
+
+.remove-button:hover {
+    background-color: #cc0000;
+}

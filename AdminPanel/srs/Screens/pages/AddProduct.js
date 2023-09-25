@@ -78,7 +78,6 @@ const AddProduct = () => {
 
     return (
         <div className="brand-form">
-            Adding to {brandID}
             <label className="brand-label">
                 Product Name
                 <input
