@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import { getFirestore, addDoc, collection, getDocs } from '@firebase/firestore';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
@@ -23,6 +23,7 @@ const AddItem = () => {
     const [colorName, setColorName] = useState('');
     const [colors, setColors] = useState([]);
     const [itemName, setItemName] = useState("");
+    const [description, setDescription] = useState("");
     const [itemPrice, setItemPrice] = useState("")
 
     const { brandID, brandName, productName, productID } = useParams();
@@ -120,6 +121,64 @@ const AddItem = () => {
             alert("Please select an image.");
         }
     }
+
+    const productData = {
+        productID: productID,
+        name: itemName, // assuming you have this state defined
+        description: description,
+        hasSizes: hasSizes,
+        sizes: sizes,
+        hasColors: hasColors,
+        colors: colors,
+        images: images.map(image => ({ uri: image })), // if images array only contains URLs
+    };
+
+    const AddItem = async () => {
+        const storage = getStorage();
+        const firestore = getFirestore();
+
+        // Upload images to Firebase Storage
+        const imageUploadPromises = images.map(image => {
+            const timeStamp = Date.now();
+            const uniqueName = `${timeStamp}-${image.name}`;
+            const imageRef = ref(storage, 'itemImages/' + uniqueName);
+            const uploadTask = uploadBytesResumable(imageRef, image);
+
+            return new Promise((resolve, reject) => {
+                uploadTask.on('state_changed',
+                    (snapshot) => { },
+                    (error) => {
+                        reject(error);
+                    },
+                    async () => {
+                        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                        resolve(downloadURL);
+                    }
+                );
+            });
+        });
+
+        Promise.all(imageUploadPromises).then(async (imageURLs) => {
+            await addDoc(collection(firestore, 'Items'), {
+                productID: productID,
+                name: itemName, // assuming you have this state defined
+                category: selectedCategory,
+                description: description,
+                hasSizes: hasSizes,
+                sizes: sizes,
+                hasColors: hasColors,
+                colors: colors,
+                price: itemPrice,
+                images: imageURLs.map(url => ({ uri: url })),
+            });
+        }).then(() => {
+            alert("Item added successfully!");
+            navigate(`/brands/${brandName}/products/${productID}/${productName}`);
+        }).catch(error => {
+            console.error("Error: ", error);
+        });
+    };
+
 
     const cancelAddition = () => {
         navigate(`/brands/${brandName}/products/${productID}/${productName}`);
@@ -295,14 +354,28 @@ const AddItem = () => {
                     </label>
                 </View>
             </View>
+
+            <label className="brand-label">
+                Description
+                <textarea
+                    className="description-textarea"
+                    placeholder="Write a detailed description..."
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                    rows="5"  // Adjust based on your requirement
+                ></textarea>
+            </label>
+
             <div className="button-container">
-                <button className="brand-button" onClick={addProduct}>
+                <button className="brand-button" onClick={AddItem}>
                     Add Product
                 </button>
                 <button className="brand-button cancel-button" onClick={cancelAddition}>
                     Cancel
                 </button>
             </div>
+
+            <pre>{description}</pre>
         </div>
     );
 }

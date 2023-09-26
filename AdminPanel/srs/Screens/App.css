@@ -320,3 +320,17 @@ input[type="checkbox"]:checked+.custom-checkbox::after {
 .remove-button:hover {
     background-color: #cc0000;
 }
+
+.description-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    /* Allow vertical resizing */
+    white-space: pre-wrap;
+    /* Keeps spaces and line breaks */
+}
