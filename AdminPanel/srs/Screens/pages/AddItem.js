@@ -10,7 +10,6 @@ import icons from '../../../assets/constants/icons';
 
 const AddItem = () => {
     const db = getFirestore();
-    const [image, setImage] = useState(null);
     const [categories, setCategories] = React.useState([]);
     const [selectedCategory, setSelectedCategory] = React.useState('');
     const [images, setImages] = useState([]);
@@ -92,46 +91,6 @@ const AddItem = () => {
         };
         fetchCategories();
     }, [db]);
-
-    const addProduct = async () => {
-        const storage = getStorage();
-
-        if (image) {
-            const timeStamp = Date.now()
-            const uniqueName = `${timeStamp}-${image.name}`;
-            const imageRef = ref(storage, `Products/${uniqueName}`);
-            const uploadTask = uploadBytesResumable(imageRef, image);
-
-            // Wait for the upload to complete
-            await uploadTask;
-
-            const imageUrl = await getDownloadURL(imageRef);
-
-            await addDoc(collection(db, 'Products'), {
-                name: productName,
-                icon: imageUrl,
-                brandID: brandID,
-                categoryID: selectedCategory,
-                isAvailable: true
-            });
-
-            alert("Product added successfully!");
-            navigate(`/brands/${brandName}/products/${productID}/${productName}`);
-        } else {
-            alert("Please select an image.");
-        }
-    }
-
-    const productData = {
-        productID: productID,
-        name: itemName, // assuming you have this state defined
-        description: description,
-        hasSizes: hasSizes,
-        sizes: sizes,
-        hasColors: hasColors,
-        colors: colors,
-        images: images.map(image => ({ uri: image })), // if images array only contains URLs
-    };
 
     const AddItem = async () => {
         const storage = getStorage();
