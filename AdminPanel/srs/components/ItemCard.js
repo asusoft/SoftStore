@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const ItemCard = ({ item }) => {
     return (
         <View style={styles.item}>
-            <Image source={{ uri: item.icon }}
+            <Image source={{ uri: item.images[0].uri }}
                 style={{
                     width: '80%', // or a fixed size that fits your design
                     height: '80%', // adjust based on your needs

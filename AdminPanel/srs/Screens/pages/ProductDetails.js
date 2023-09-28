@@ -75,8 +75,16 @@ const ProductDetails = () => {
                         <Text style={{ fontSize: 24, fontWeight: '600' }}>{product?.name}</Text>
                         <Text style={{ fontSize: 18, marginTop: 8 }}>{items?.length} items</Text>
                     </View>
-                    <Pressable style={{ flexDirection: 'row', padding: 8, backgroundColor: COLORS.red, borderRadius: 6, height: 40, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ fontSize: 16, color: COLORS.white }}>Make Unavailable</Text>
+                    <Pressable style={{ flexDirection: 'row', padding: 8, backgroundColor: product?.isAvailable ? COLORS.red : COLORS.green, borderRadius: 6, height: 40, alignItems: 'center', justifyContent: 'center' }}>
+                        {
+                            product?.isAvailable ? (
+                                <Text style={{ fontSize: 16, color: COLORS.white }}>Make Unavailable</Text>
+                            ) : (
+                                <Text style={{ fontSize: 16, color: COLORS.white }}>Make Available</Text>
+                            )
+                        }
+
+
                     </Pressable>
                 </View>
             </View>

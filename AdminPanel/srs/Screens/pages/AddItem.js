@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, Pressable } from 'react-native';
 import { getFirestore, addDoc, collection, getDocs } from '@firebase/firestore';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from '@firebase/storage';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import '../App.css'
@@ -23,9 +23,12 @@ const AddItem = () => {
     const [colors, setColors] = useState([]);
     const [itemName, setItemName] = useState("");
     const [description, setDescription] = useState("");
-    const [itemPrice, setItemPrice] = useState("")
+    const [itemPrice, setItemPrice] = useState("");
+    const [boxItemName, setBoxItemName] = useState('');
+    const [boxItemImage, setBoxItemImage] = useState(null); // This is for the File object
+    const [boxItems, setBoxItems] = useState([]);
 
-    const { brandID, brandName, productName, productID } = useParams();
+    const { brandName, productName, productID } = useParams();
     const navigate = useNavigate();
 
     const toggleHasSize = () => {
@@ -71,6 +74,45 @@ const AddItem = () => {
         setImages(selectedImages);
     };
 
+    const handleAddBoxItem = () => {
+        if (boxItemName && boxItemImage) {
+            setBoxItems(prevBoxItems => [
+                ...prevBoxItems,
+                { name: boxItemName, image: boxItemImage }  // Storing the File object
+            ]);
+            setBoxItemName('');
+            setBoxItemImage(null);
+        }
+    };
+
+
+    const deleteImageFromStorage = async (downloadUrl) => {
+        const storage = getStorage();
+        const storagePath = getStoragePathFromUrl(downloadUrl);
+
+        if (!storagePath) {
+            console.error("Failed to get storage path from URL");
+            return;
+        }
+
+        const imageRef = ref(storage, storagePath);
+
+        try {
+            await deleteObject(imageRef);
+            console.log("Image deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting image: ", error);
+        }
+    };
+
+
+    const handleRemoveBoxItem = async (indexToRemove) => {
+        setBoxItems(prevBoxItems => prevBoxItems.filter((_, index) => index !== indexToRemove));
+    };
+
+
+
+
     const removeImage = (indexToRemove) => {
         setImages(prevImages => prevImages.filter((_, index) => index !== indexToRemove));
     };
@@ -96,11 +138,10 @@ const AddItem = () => {
         const storage = getStorage();
         const firestore = getFirestore();
 
-        // Upload images to Firebase Storage
-        const imageUploadPromises = images.map(image => {
+        const uploadImage = (image, folder) => {
             const timeStamp = Date.now();
             const uniqueName = `${timeStamp}-${image.name}`;
-            const imageRef = ref(storage, 'itemImages/' + uniqueName);
+            const imageRef = ref(storage, folder + '/' + uniqueName);
             const uploadTask = uploadBytesResumable(imageRef, image);
 
             return new Promise((resolve, reject) => {
@@ -111,25 +152,33 @@ const AddItem = () => {
                     },
                     async () => {
                         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                        resolve(downloadURL);
+                        resolve({ uri: downloadURL });  // Return the download URL
                     }
                 );
             });
-        });
+        };
 
-        Promise.all(imageUploadPromises).then(async (imageURLs) => {
-            await addDoc(collection(firestore, 'Items'), {
-                productID: productID,
-                name: itemName, // assuming you have this state defined
-                category: selectedCategory,
-                description: description,
-                hasSizes: hasSizes,
-                sizes: sizes,
-                hasColors: hasColors,
-                colors: colors,
-                price: itemPrice,
-                images: imageURLs.map(url => ({ uri: url })),
-            });
+        const itemUploadPromises = images.map(img => uploadImage(img, 'itemImages'));
+        const boxItemUploadPromises = boxItems.map(item => uploadImage(item.image, 'boxItemImages'));
+
+        const allItemURLs = await Promise.all(itemUploadPromises);
+        const allBoxItemURLs = await Promise.all(boxItemUploadPromises);
+
+        await addDoc(collection(firestore, 'Items'), {
+            productID: productID,
+            name: itemName,
+            category: selectedCategory,
+            description: description,
+            hasSizes: hasSizes,
+            sizes: sizes,
+            hasColors: hasColors,
+            colors: colors,
+            price: itemPrice,
+            images: allItemURLs,
+            boxItems: boxItems.map((item, idx) => ({
+                name: item.name,
+                image: allBoxItemURLs[idx]
+            }))
         }).then(() => {
             alert("Item added successfully!");
             navigate(`/brands/${brandName}/products/${productID}/${productName}`);
@@ -137,7 +186,6 @@ const AddItem = () => {
             console.error("Error: ", error);
         });
     };
-
 
     const cancelAddition = () => {
         navigate(`/brands/${brandName}/products/${productID}/${productName}`);
@@ -325,6 +373,32 @@ const AddItem = () => {
                 ></textarea>
             </label>
 
+            <label className="brand-label">
+                Box Items
+                <div className="sizes-container">
+                    <div className="input-group">
+                        <input
+                            className="input-field"
+                            type="text"
+                            placeholder="Item Name"
+                            value={boxItemName}
+                            onChange={(e) => setBoxItemName(e.target.value)}
+                        />
+                        <input type="file" accept="image/*" onChange={(e) => setBoxItemImage(e.target.files[0])} />
+                        <button className="add-button" onClick={handleAddBoxItem}>Add Box Item</button>
+                    </div>
+
+                    <ul className="size-list">
+                        {boxItems.map((item, index) => (
+                            <li key={index} className="size-item">
+                                {item.name} -  <img src={URL.createObjectURL(item.image)} alt={item.name} width="50" height="50" />
+                                <button className="add-button" onClick={() => handleRemoveBoxItem(index)}>X</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </label>
+
             <div className="button-container">
                 <button className="brand-button" onClick={AddItem}>
                     Add Product
@@ -333,8 +407,6 @@ const AddItem = () => {
                     Cancel
                 </button>
             </div>
-
-            <pre>{description}</pre>
         </div>
     );
 }
