@@ -11,17 +11,34 @@ import ItemCard from '../../components/ItemCard';
 import { useNavigation } from '@react-navigation/native';
 import Featured from '../../components/Featured';
 import SoftTrade from '../../components/SoftTrade';
+import firestore from '@react-native-firebase/firestore';
 
 // create a component
 const BrandScreen = ({ route }) => {
+    const db = firestore()
     const navigation = useNavigation()
     const { brand } = route.params;
-    const products = dummyData.Products
 
-    const brandIdToFilter = brand?.id
-    const filteredProducts = products.filter(product => product.brandId == brandIdToFilter);
+    const brandID = brand?.id
 
     const [showStickyHeader, setShowStickyHeader] = useState(false);
+    const [products, setProducts] = useState([])
+
+    React.useEffect(() => {
+
+        db.collection("Products")
+            .where("brandID", "==", brandID)
+            .onSnapshot((querySnapshot) => {
+                const fetchedProducts = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+
+                const reversedProducts = fetchedProducts.reverse();
+                setProducts(reversedProducts);
+            });
+
+    }, [brandID])
 
     const handleScroll = (event) => {
         const yOffset = event.nativeEvent.contentOffset.y;
@@ -86,7 +103,7 @@ const BrandScreen = ({ route }) => {
                             <Text style={styles.largeTitle}>{brand?.name}</Text>
                         </View>
                         <View style={{ height: 100, marginTop: 10 }}>
-
+                            <Text>{brand?.createdAt}</Text>
                         </View>
 
                         <View style={{ marginTop: 10, flex: 1, height: 670, backgroundColor: COLORS.black }}>
@@ -116,7 +133,7 @@ const BrandScreen = ({ route }) => {
                             <Text style={{ fontSize: 26, fontWeight: '700', marginBottom: 15 }}>Shop by product</Text>
 
                             <FlatList
-                                data={filteredProducts}
+                                data={products}
                                 showsVerticalScrollIndicator={false}
                                 numColumns={2}
                                 renderItem={({ item }) => {
@@ -124,7 +141,7 @@ const BrandScreen = ({ route }) => {
                                         <View style={{ margin: 5, width: 165 }}>
                                             <Pressable onPress={() => navigation.navigate("ProductScreen", { product: item, title: item.name, back: brand?.name })} style={styles.product}>
                                                 <Text style={{ fontSize: 16, marginVertical: 15, fontWeight: '700', marginHorizontal: 5 }}>{item.name}</Text>
-                                                <Image source={{ uri: item.image }}
+                                                <Image source={{ uri: item.icon }}
                                                     style={{
                                                         width: "100%",
                                                         height: 165,

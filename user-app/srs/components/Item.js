@@ -7,15 +7,18 @@ import { useNavigation } from '@react-navigation/native';
 
 // create a component
 const Item = ({ item }) => {
-    const itemImages = dummyData.Images
-    const filteredImage = itemImages.filter(image => image.itemId == item.id);
-    const itemImage = filteredImage[0].uri[0];
+
+    const sizes = item?.sizes;
+    const sortedSizes = sizes.slice().sort((a, b) => a.price - b.price);
+
     const navigation = useNavigation()
     return (
         <TouchableOpacity activeOpacity={1} onPress={() => navigation.navigate('ItemInfoScreen', { item: item })} style={{ alignItems: 'center', }}>
-            <Image source={{ uri: itemImage }} style={{ height: 200, width: "100%", marginTop: 10 }} resizeMode='contain' />
+            <Image source={{ uri: item.images[0].uri }} style={{ height: 200, width: "100%", marginTop: 10 }} resizeMode='contain' />
             <Text style={{ marginTop: 30, fontSize: 24, fontWeight: '700', marginHorizontal: 20, textAlign: 'center' }}>{item.name}</Text>
-            <Text style={{ marginTop: 10, fontSize: 16, color: COLORS.primary }}>From ₦ 1,200,000</Text>
+            <Text style={{ marginTop: 10, fontSize: 16, color: COLORS.primary }}>
+                From ₦ {sortedSizes && sortedSizes.length > 0 && sortedSizes[0]?.price ? sortedSizes[0].price : item?.price}
+            </Text>
         </TouchableOpacity>
     );
 };

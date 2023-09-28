@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 const Brand = ({ brand }) => {
     const navigation = useNavigation();
 
-
     return (
         <View style={{ margin: 5 }}>
             <Pressable onPress={() => navigation.navigate('BrandScreen', { brand: brand })} style={styles.brand}>

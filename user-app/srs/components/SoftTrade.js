@@ -18,7 +18,7 @@ const SoftTrade = () => {
                 <Text style={{ fontSize: 26, fontWeight: '700', marginBottom: 15 }}>Where Old Meets New Potential.</Text>
 
             </View>
-            <Text style={{ fontSize: 16 }}>Your current device holds the key. Unveil its trade-in value and pick: a shiny upgrade or a pocketful of cash.</Text>
+            <Text style={{ fontSize: 16 }}>Your current device holds the key. Unveil its SoftTrade value and pick: a shiny upgrade or a pocketful of cash.</Text>
             <Pressable>
                 <Text style={{ fontSize: 16, color: COLORS.primary, marginTop: 15 }}>Learn more</Text>
             </Pressable>

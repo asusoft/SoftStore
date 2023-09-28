@@ -1,21 +1,33 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import { COLORS } from '../../../assets/constants/theme';
 import Featured from '../../components/Featured';
 import SoftTrade from '../../components/SoftTrade';
-
-import dummyData from '../../../assets/constants/dummyData';
+import firestore from '@react-native-firebase/firestore';
 import Item from '../../components/Item';
+
+
 // create a component
 const ProductScreen = ({ route }) => {
+    const db = firestore();
     const { product } = route.params
 
-    const items = dummyData.Items
-    const itemImages = dummyData.Images
+    const productID = product?.id;
 
-    const productIdToFilter = product?.id
-    const filteredItems = items.filter(item => item.productID == productIdToFilter);
+    const [items, setItems] = useState([])
+
+    React.useEffect(() => {
+        db.collection("Items")
+            .where("productID", "==", productID)
+            .onSnapshot((querySnapshot) => {
+                const fetchedItems = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setItems(fetchedItems);
+            });
+    }, [productID])
 
 
     return (
@@ -32,7 +44,7 @@ const ProductScreen = ({ route }) => {
                     </View>
                     <View style={{ backgroundColor: COLORS.white, paddingHorizontal: 50, paddingVertical: 20, paddingBottom: 20 }}>
                         <FlatList
-                            data={filteredItems}
+                            data={items}
                             showsVerticalScrollIndicator={false}
                             renderItem={({ item }) => {
                                 return (

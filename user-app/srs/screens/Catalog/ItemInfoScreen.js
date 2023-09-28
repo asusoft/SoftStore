@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Animated, FlatList, Dimensions, Image, Pressable } from 'react-native';
 import { COLORS } from '../../../assets/constants/theme';
-import dummyData from '../../../assets/constants/dummyData';
 import icons from '../../../assets/constants/icons';
 import ItemCard from '../../components/ItemCard';
 import FooterButton from '../../components/FooterButton';
@@ -10,15 +9,11 @@ import FooterButton from '../../components/FooterButton';
 // create a component
 const ItemInfoScreen = ({ route }) => {
     const item = route.params;
-    const Images = dummyData.Images;
-    const itemImagesObject = Images.find(image => image.itemId == item.item.id);
-    const itemImagesArray = itemImagesObject?.uri || [];
-    const Colors = dummyData.Colours;
-    const itemColorsArray = Colors.filter(color => color.itemID == item.item.id);
-    const itemColors = itemColorsArray || [];
-    const Sizes = dummyData.Sizes;
-    const itemSizesArray = Sizes.filter(size => size.itemID == item.item.id);
-    const itemSizes = itemSizesArray || [];
+    const itemImagesArray = item?.item.images;
+    const itemColors = item?.item.colors;
+    const sizes = item?.item.sizes;
+    const itemSizes = sizes.slice().sort((a, b) => a.price - b.price);
+    const boxItems = item?.item.boxItems;
 
     const [selectedSize, setSelectedSize] = useState(-1);
     const [selectedColor, setSelectedColor] = useState(-1);
@@ -30,11 +25,16 @@ const ItemInfoScreen = ({ route }) => {
     const scrollX = React.useRef(new Animated.Value(0)).current;
 
     const isEnableAddToBag = () => {
-        return (
-            selectedSize !== -1 &&
-            selectedColor !== -1 &&
-            selectedPaymentMethod !== -1
-        );
+        if (item?.item.hasSizes && item?.item.hasColors) {
+            return (
+                selectedSize !== -1 &&
+                selectedColor !== -1 &&
+                selectedPaymentMethod !== -1
+            );
+        } else {
+            return selectedPaymentMethod !== -1
+        }
+
     };
 
     const handlePress = () => {
@@ -63,7 +63,7 @@ const ItemInfoScreen = ({ route }) => {
                 renderItem={({ item }) => {
                     return (
                         <View style={styles.imageContainer}>
-                            <Image source={{ uri: item }} resizeMode='contain' style={{ height: 300, width: "100%", alignSelf: 'center' }} />
+                            <Image source={{ uri: item.uri }} resizeMode='contain' style={{ height: 300, width: "100%", alignSelf: 'center' }} />
                         </View>
                     );
                 }}
@@ -139,7 +139,7 @@ const ItemInfoScreen = ({ route }) => {
                             >
                                 <View style={{ height: 25, width: 25, borderRadius: 15, backgroundColor: item.value, opacity: selectedColor === index ? 1 : 0.3 }} />
 
-                                <Text style={{ marginTop: 5, fontSize: 16, opacity: selectedColor === index ? 1 : 0.3 }}>{item.name} {index}</Text>
+                                <Text style={{ marginTop: 5, fontSize: 16, opacity: selectedColor === index ? 1 : 0.3 }}>{item.name}</Text>
 
                             </Pressable>
                         </View>
@@ -233,7 +233,7 @@ const ItemInfoScreen = ({ route }) => {
             return (
                 <View style={{ flexDirection: 'row', marginBottom: 10 }}>
                     {
-                        itemSizes.map((_, i) => {
+                        boxItems.map((_, i) => {
                             const inputRange = [(i - 1) * width, i * width, (i + 1) * width]
                             const scale = scrollBOX.interpolate({
                                 inputRange,
@@ -270,7 +270,7 @@ const ItemInfoScreen = ({ route }) => {
             <View style={{ marginBottom: 15 }}>
                 <Text style={{ marginHorizontal: 25, fontSize: 20, fontWeight: '600', marginTop: 45 }}>In Your Box</Text>
                 <FlatList
-                    data={itemSizes}
+                    data={boxItems}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     pagingEnabled={true}
@@ -289,7 +289,7 @@ const ItemInfoScreen = ({ route }) => {
                                 >
                                     <Image source={{ uri: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-blacktitanium-witb-202309?wid=346&hei=784&fmt=jpeg&qlt=90&.v=1692829510589" }} resizeMode='contain' style={{ height: '100%', width: '100%', borderRadius: 8 }} />
                                 </View>
-                                <Text style={{ alignSelf: 'center', fontSize: 20, marginTop: 25, fontWeight: '600' }}>iPhone</Text>
+                                <Text style={{ alignSelf: 'center', fontSize: 20, marginTop: 25, fontWeight: '600' }}>{item?.name}</Text>
                             </View>
                         );
                     }}
@@ -297,8 +297,6 @@ const ItemInfoScreen = ({ route }) => {
                 <View style={{ marginVertical: 20, alignItems: 'center' }}>
                     <Indicater scrollBOX={scrollBOX} />
                 </View>
-
-
             </View>
         )
     }
@@ -309,12 +307,12 @@ const ItemInfoScreen = ({ route }) => {
                 {
                     showPreview ? (
                         <View style={{ flexDirection: 'row', marginBottom: 10, }}>
-                            <Image source={{ uri: itemImagesArray[1] }} style={{ height: 70, width: 70 }} />
+                            <Image source={{ uri: itemImagesArray.length > 1 ? itemImagesArray[1].uri : itemImagesArray[0].uri }} resizeMode='contain' style={{ height: 70, width: 70 }} />
                             <View style={{ marginLeft: 30 }}>
                                 <Text style={{ fontSize: 18, marginBottom: 5, fontWeight: '600' }}>{item.item.name}</Text>
-                                <Text style={{ fontSize: 18, marginBottom: 5 }}>{itemColorsArray[selectedColor].name}</Text>
-                                <Text style={{ fontSize: 16, marginBottom: 5 }}>{itemSizesArray[selectedSize].value}</Text>
-                                <Text style={{ fontSize: 18, marginBottom: 5, fontWeight: '700' }}>₦ {itemSizesArray[selectedSize].price}</Text>
+                                {item?.item.hasColors && <Text style={{ fontSize: 18, marginBottom: 5 }}>{itemColors[selectedColor].name}</Text>}
+                                {item?.item.hasSizes && <Text style={{ fontSize: 16, marginBottom: 5 }}>{itemSizes[selectedSize].value}</Text>}
+                                <Text style={{ fontSize: 18, marginBottom: 5, fontWeight: '700' }}>₦ {item?.item.hasSizes ? itemSizes[selectedSize].price : item?.item.price}</Text>
                                 <Text style={{ fontSize: 16, marginBottom: 5 }}>{selectedPaymentMethod === 0 ? 'SoftTrade' : 'Cash Payment'}</Text>
                             </View>
                             <Pressable onPress={() => setShowPreview(false)} style={{ flex: 1, alignItems: 'flex-end', paddingHorizontal: 20 }}>
@@ -355,11 +353,18 @@ const ItemInfoScreen = ({ route }) => {
                             alignItems: 'center',
                         }}>
                             {RenderImages()}
-                            <Indicator scrollX={scrollX} />
+                            {
+                                itemImagesArray.length > 1 ? <Indicator scrollX={scrollX} /> : []
+                            }
                         </View>
                         <View style={{ backgroundColor: COLORS.lightGray2, paddingVertical: 25, width: '100%', paddingHorizontal: 30, alignItems: 'center' }}>
                             <Text style={{ fontSize: 24, fontWeight: '600' }}>Buy {item.item.name}</Text>
-                            <Text style={{ fontSize: 16, marginTop: 5 }}>Starts from ₦ 1,200,000</Text>
+                            {
+                                itemSizes && itemSizes.length > 0 && itemSizes[0]?.price ?
+                                    <Text style={{ fontSize: 16, marginTop: 5 }}>Starts from ₦ {itemSizes[0].price}</Text>
+                                    :
+                                    <Text style={{ fontSize: 16, marginTop: 5 }}>At ₦ {item?.item.price} </Text>
+                            }
                         </View>
                         <View style={{ paddingHorizontal: 30, backgroundColor: COLORS.white, borderTopWidth: 1, borderTopColor: COLORS.lightGray, borderBottomColor: COLORS.lightGray, borderBottomWidth: 1 }}>
                             <Pressable style={{ height: 60, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -368,15 +373,23 @@ const ItemInfoScreen = ({ route }) => {
                             </Pressable>
                         </View>
 
-                        <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
-                            <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Paint Your Preference.</Text>
-                            <ColorPicker />
-                        </View>
-                        <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
-                            <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Storage Solutions: Which Fits You Best?</Text>
-                            <StoragePicker />
-                        </View>
-                        <RenderInBox />
+                        {
+                            item?.item.hasColors && (
+                                <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
+                                    <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Paint Your Preference.</Text>
+                                    <ColorPicker />
+                                </View>
+                            )
+                        }
+                        {
+                            item?.item.hasSizes && (
+                                <View style={{ alignSelf: 'baseline', paddingHorizontal: 30, marginBottom: 20 }}>
+                                    <Text style={{ fontSize: 20, fontWeight: '600', marginTop: 10 }}>Storage Solutions: Which Fits You Best?</Text>
+                                    <StoragePicker />
+                                </View>
+                            )
+                        }
+                        {boxItems != null && <RenderInBox />}
                         <View style={{ backgroundColor: COLORS.white, paddingVertical: 25, width: '100%', paddingHorizontal: 25 }}>
                             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Complete Your Setup</Text>
                             <View style={{ marginVertical: 20 }}>
