@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "334347452009",
+    "project_id": "softstore-d4451",
+    "storage_bucket": "softstore-d4451.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334347452009:android:29f80ba062a8a6ee6f6cf8",
+        "android_client_info": {
+          "package_name": "com.softsavvy.softstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334347452009-cnh3s8qcvp678tsqb70n8v5i06589c8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBplYBXyBiF29z48W8y1oRAvEaQuxwsVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334347452009-cnh3s8qcvp678tsqb70n8v5i06589c8i.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "334347452009-mf2r15pjl6ohn971adc94f6urbmhodoi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.softsavvy.softstore"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
